@@ -1,8 +1,131 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "repo", "repo", "{99A334F3-5294-418C-984E-98296821DF81}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{35D479A1-E7BC-4C66-B26C-A627063260DB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{C5838635-BACC-45A5-9F60-021F6D491F55}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{BD958C62-E499-4E1E-873E-F4320CF4AC73}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "applications", "applications", "{21A12E61-75DE-4A63-9C64-5897375E919F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "modules", "modules", "{22990DB7-165F-42C6-8F9C-6A3230E465A2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "storages", "storages", "{71723F05-D07D-4CCF-8C9A-169F9B9FAF19}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{CBA2BC84-73C7-426C-8B9D-D443E0BA73AF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{BB8504F7-AA43-43B0-AA8D-C28F43C62325}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trader.WebApi", "src\applications\api\Trader.WebApi\Trader.WebApi.csproj", "{9D117F18-513D-40F3-868F-A4E30A4F1442}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "extensions", "extensions", "{13595C05-9EC0-4FB0-B587-380EE5793113}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trader.Storage.Account", "src\storages\Trader.Storage.Account\Trader.Storage.Account.csproj", "{E26CDF5C-5993-4A61-AAD4-97E519BB527F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trader.Extensions.Logging", "src\modules\extensions\Trader.Extensions.Logging\Trader.Extensions.Logging.csproj", "{66439E77-36F7-4984-94D9-8A273C9A2FB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trader.IdentityServer", "src\applications\services\Trader.IdentityServer\Trader.IdentityServer.csproj", "{285CBC95-B0AE-4038-8D60-8A6F139D37DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trader.Extensions.Identity", "src\modules\extensions\Trader.Extensions.Identity\Trader.Extensions.Identity.csproj", "{5B82218A-A36D-4E40-B450-EB8B7CE832EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9070A0C3-A3F1-4A84-86D9-9AF5237EC527}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{281D6A9E-D9D7-4955-BF4D-4DF32F2C6DBC}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\services\reverse-proxy-compose.yml = deploy\services\reverse-proxy-compose.yml
+		deploy\services\identity-compose.yml = deploy\services\identity-compose.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "init-queries", "init-queries", "{72D22C0D-C37C-4AB1-94A8-3E2D07FAA76F}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\services\init-queries\init-identity.sql = deploy\services\init-queries\init-identity.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "security", "security", "{3F45B138-2A70-45F0-90B0-69C68B08E7F2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "configurations", "configurations", "{1BFF04AD-3969-4F65-85E5-A045F8899325}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\services\configurations\nginx.conf = deploy\services\configurations\nginx.conf
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trader.Models", "src\modules\Trader.Models\Trader.Models.csproj", "{43FC76A4-9603-41CE-81DE-4A1E39815240}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trader.Unit.Generator", "tests\Trader.Unit.Generator\Trader.Unit.Generator.csproj", "{8B20FC22-936A-44AF-9716-590DC71C74DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trader.Extensions", "src\modules\extensions\Trader.Extensions\Trader.Extensions.csproj", "{683E1D34-A71F-4369-AAF8-2C40909C094B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trader.Constants", "src\modules\Trader.Constants\Trader.Constants.csproj", "{34A21790-C3C9-48E6-97C6-D3B9FF4CC9CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{21A12E61-75DE-4A63-9C64-5897375E919F} = {35D479A1-E7BC-4C66-B26C-A627063260DB}
+		{22990DB7-165F-42C6-8F9C-6A3230E465A2} = {35D479A1-E7BC-4C66-B26C-A627063260DB}
+		{71723F05-D07D-4CCF-8C9A-169F9B9FAF19} = {35D479A1-E7BC-4C66-B26C-A627063260DB}
+		{CBA2BC84-73C7-426C-8B9D-D443E0BA73AF} = {21A12E61-75DE-4A63-9C64-5897375E919F}
+		{BB8504F7-AA43-43B0-AA8D-C28F43C62325} = {21A12E61-75DE-4A63-9C64-5897375E919F}
+		{9D117F18-513D-40F3-868F-A4E30A4F1442} = {CBA2BC84-73C7-426C-8B9D-D443E0BA73AF}
+		{13595C05-9EC0-4FB0-B587-380EE5793113} = {22990DB7-165F-42C6-8F9C-6A3230E465A2}
+		{E26CDF5C-5993-4A61-AAD4-97E519BB527F} = {71723F05-D07D-4CCF-8C9A-169F9B9FAF19}
+		{66439E77-36F7-4984-94D9-8A273C9A2FB7} = {13595C05-9EC0-4FB0-B587-380EE5793113}
+		{285CBC95-B0AE-4038-8D60-8A6F139D37DE} = {BB8504F7-AA43-43B0-AA8D-C28F43C62325}
+		{5B82218A-A36D-4E40-B450-EB8B7CE832EE} = {13595C05-9EC0-4FB0-B587-380EE5793113}
+		{281D6A9E-D9D7-4955-BF4D-4DF32F2C6DBC} = {BD958C62-E499-4E1E-873E-F4320CF4AC73}
+		{72D22C0D-C37C-4AB1-94A8-3E2D07FAA76F} = {281D6A9E-D9D7-4955-BF4D-4DF32F2C6DBC}
+		{3F45B138-2A70-45F0-90B0-69C68B08E7F2} = {281D6A9E-D9D7-4955-BF4D-4DF32F2C6DBC}
+		{1BFF04AD-3969-4F65-85E5-A045F8899325} = {281D6A9E-D9D7-4955-BF4D-4DF32F2C6DBC}
+		{43FC76A4-9603-41CE-81DE-4A1E39815240} = {22990DB7-165F-42C6-8F9C-6A3230E465A2}
+		{8B20FC22-936A-44AF-9716-590DC71C74DB} = {C5838635-BACC-45A5-9F60-021F6D491F55}
+		{683E1D34-A71F-4369-AAF8-2C40909C094B} = {13595C05-9EC0-4FB0-B587-380EE5793113}
+		{34A21790-C3C9-48E6-97C6-D3B9FF4CC9CA} = {22990DB7-165F-42C6-8F9C-6A3230E465A2}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9D117F18-513D-40F3-868F-A4E30A4F1442}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D117F18-513D-40F3-868F-A4E30A4F1442}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D117F18-513D-40F3-868F-A4E30A4F1442}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D117F18-513D-40F3-868F-A4E30A4F1442}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E26CDF5C-5993-4A61-AAD4-97E519BB527F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E26CDF5C-5993-4A61-AAD4-97E519BB527F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E26CDF5C-5993-4A61-AAD4-97E519BB527F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E26CDF5C-5993-4A61-AAD4-97E519BB527F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66439E77-36F7-4984-94D9-8A273C9A2FB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66439E77-36F7-4984-94D9-8A273C9A2FB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66439E77-36F7-4984-94D9-8A273C9A2FB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66439E77-36F7-4984-94D9-8A273C9A2FB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{285CBC95-B0AE-4038-8D60-8A6F139D37DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{285CBC95-B0AE-4038-8D60-8A6F139D37DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{285CBC95-B0AE-4038-8D60-8A6F139D37DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{285CBC95-B0AE-4038-8D60-8A6F139D37DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B82218A-A36D-4E40-B450-EB8B7CE832EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B82218A-A36D-4E40-B450-EB8B7CE832EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B82218A-A36D-4E40-B450-EB8B7CE832EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B82218A-A36D-4E40-B450-EB8B7CE832EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43FC76A4-9603-41CE-81DE-4A1E39815240}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43FC76A4-9603-41CE-81DE-4A1E39815240}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43FC76A4-9603-41CE-81DE-4A1E39815240}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43FC76A4-9603-41CE-81DE-4A1E39815240}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B20FC22-936A-44AF-9716-590DC71C74DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B20FC22-936A-44AF-9716-590DC71C74DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B20FC22-936A-44AF-9716-590DC71C74DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B20FC22-936A-44AF-9716-590DC71C74DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{683E1D34-A71F-4369-AAF8-2C40909C094B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{683E1D34-A71F-4369-AAF8-2C40909C094B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{683E1D34-A71F-4369-AAF8-2C40909C094B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{683E1D34-A71F-4369-AAF8-2C40909C094B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34A21790-C3C9-48E6-97C6-D3B9FF4CC9CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34A21790-C3C9-48E6-97C6-D3B9FF4CC9CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34A21790-C3C9-48E6-97C6-D3B9FF4CC9CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34A21790-C3C9-48E6-97C6-D3B9FF4CC9CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

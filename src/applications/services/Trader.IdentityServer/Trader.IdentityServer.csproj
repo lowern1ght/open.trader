@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\modules\extensions\Trader.Extensions.Identity\Trader.Extensions.Identity.csproj" />
+      <ProjectReference Include="..\..\..\modules\extensions\Trader.Extensions.Logging\Trader.Extensions.Logging.csproj" />
+      <ProjectReference Include="..\..\..\modules\extensions\Trader.Extensions\Trader.Extensions.csproj" />
+      <ProjectReference Include="..\..\..\modules\Trader.Models\Trader.Models.csproj" />
+      <ProjectReference Include="..\..\..\storages\Trader.Storage.Account\Trader.Storage.Account.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Duende.AccessTokenManagement" Version="2.0.3" />
+      <PackageReference Include="Duende.IdentityServer.AspNetIdentity" Version="6.3.6" />
+      <PackageReference Include="Duende.IdentityServer.EntityFramework" Version="6.3.6" />
+      <PackageReference Include="Duende.IdentityServer.EntityFramework.Storage" Version="6.3.6" />
+      <PackageReference Include="Duende.IdentityServer.Storage" Version="6.3.6" />
+      <PackageReference Include="IdentityModel" Version="6.2.0" />
+      <PackageReference Include="Mapster" Version="7.4.0" />
+      <PackageReference Include="Mapster.DependencyInjection" Version="1.0.1" />
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.14" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.14">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="7.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\..\..\..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
+      <Content Update="Configs\appsettings.Development.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Update="Configs\identity.Development.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Controllers\" />
+      <Folder Include="Services\" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Duende.IdentityServer" Version="6.3.6"/>
+        <PackageReference Include="Duende.IdentityServer.Storage" Version="6.3.6"/>
+        <PackageReference Include="IdentityModel" Version="6.2.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\Trader.Constants\Trader.Constants.csproj"/>
+    </ItemGroup>
+
+</Project>

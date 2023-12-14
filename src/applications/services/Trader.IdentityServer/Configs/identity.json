@@ -1,0 +1,102 @@
+{"IdentityConfig" : {
+  "Clients": [
+    {
+      "Enabled": true,
+      "ClientId": "web-api.trader",
+      "ProtocolType": "oidc",
+      "ClientSecrets": [
+        {
+          "Description": null,
+          "Value": "NtEWYVRKYfyBnjHXz\u002BoQR74Hamr2XMLCh0AXKkSq7b81DvSbPq/xPNALhEH6C8wvtxzkm1whfk7PJHWbVJdWLA==",
+          "Expiration": null,
+          "Type": "SharedSecret"
+        }
+      ],
+      "RequireClientSecret": true,
+      "ClientName": null,
+      "Description": "Web-Api default client",
+      "ClientUri": null,
+      "LogoUri": null,
+      "RequireConsent": false,
+      "AllowRememberConsent": true,
+      "AllowedGrantTypes": [
+        "client_credentials"
+      ],
+      "RequirePkce": true,
+      "AllowPlainTextPkce": false,
+      "RequireRequestObject": false,
+      "AllowAccessTokensViaBrowser": false,
+      "RequireDPoP": false,
+      "DPoPValidationMode": 1,
+      "DPoPClockSkew": "00:05:00",
+      "RedirectUris": [],
+      "PostLogoutRedirectUris": [],
+      "FrontChannelLogoutUri": null,
+      "FrontChannelLogoutSessionRequired": true,
+      "BackChannelLogoutUri": null,
+      "BackChannelLogoutSessionRequired": true,
+      "AllowOfflineAccess": false,
+      "AllowedScopes": [
+        "web-api.trader"
+      ],
+      "AlwaysIncludeUserClaimsInIdToken": false,
+      "IdentityTokenLifetime": 300,
+      "AllowedIdentityTokenSigningAlgorithms": [],
+      "AccessTokenLifetime": 3600,
+      "AuthorizationCodeLifetime": 300,
+      "AbsoluteRefreshTokenLifetime": 2592000,
+      "SlidingRefreshTokenLifetime": 1296000,
+      "ConsentLifetime": null,
+      "RefreshTokenUsage": 1,
+      "UpdateAccessTokenClaimsOnRefresh": false,
+      "RefreshTokenExpiration": 1,
+      "AccessTokenType": 0,
+      "EnableLocalLogin": true,
+      "IdentityProviderRestrictions": [],
+      "IncludeJwtId": true,
+      "Claims": [],
+      "AlwaysSendClientClaims": false,
+      "ClientClaimsPrefix": "client_",
+      "PairWiseSubjectSalt": null,
+      "UserSsoLifetime": null,
+      "UserCodeType": null,
+      "DeviceCodeLifetime": 300,
+      "CibaLifetime": null,
+      "PollingInterval": null,
+      "CoordinateLifetimeWithUserSession": null,
+      "AllowedCorsOrigins": [],
+      "InitiateLoginUri": null,
+      "Properties": {}
+    }
+  ],
+  "ApiScopes": [
+    {
+      "Required": true,
+      "Emphasize": false,
+      "Enabled": true,
+      "Name": "web-api.trader",
+      "DisplayName": "Web-Api Scope",
+      "Description": "Web api scope",
+      "ShowInDiscoveryDocument": true,
+      "UserClaims": [],
+      "Properties": {}
+    }
+  ],
+  "TestClient": [],
+  "IdentityResources": [
+    {
+      "Required": false,
+      "Emphasize": true,
+      "Enabled": true,
+      "Name": "email",
+      "DisplayName": "Your email address",
+      "Description": null,
+      "ShowInDiscoveryDocument": true,
+      "UserClaims": [
+        "email",
+        "email_verified"
+      ],
+      "Properties": {}
+    }
+  ]
+}}
