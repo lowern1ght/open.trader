@@ -1,5 +1,4 @@
-﻿using Duende.IdentityServer.Models;
-using IdentityModel;
+﻿using IdentityModel;
 
 namespace Trader.Unit.Generator;
 
@@ -10,7 +9,7 @@ public static class SecretHelper
 {
     public static string GenerateSha256()
     {
-        return Guid.NewGuid().ToString().Sha256();
+        return Guid.NewGuid().ToString().ToSha256();
     }
 
     public static string GenerateSha512()

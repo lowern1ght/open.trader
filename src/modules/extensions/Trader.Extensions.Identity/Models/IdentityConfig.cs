@@ -1,11 +1,16 @@
-﻿using Duende.IdentityServer.Test;
-using Duende.IdentityServer.Models;
+﻿using IdentityServer4.Test;
+using IdentityServer4.Models;
 
 namespace Trader.Extensions.Identity.Models;
 
 [Serializable]
 public class IdentityConfig
 {
+    /// <summary>
+    ///     Test users
+    /// </summary>
+    public List<TestUser> TestClient { get; init; } = new();
+    
     /// <summary>
     ///     Clients settings
     /// </summary>
@@ -17,12 +22,12 @@ public class IdentityConfig
     public IEnumerable<ApiScope> ApiScopes { get; init; } = ArraySegment<ApiScope>.Empty;
     
     /// <summary>
-    ///     Test users
+    /// Api resources
     /// </summary>
-    public IEnumerable<TestUser> TestClient { get; init; } = ArraySegment<TestUser>.Empty;
+    public IEnumerable<ApiResource> ApiResources { get; init; } = ArraySegment<ApiResource>.Empty;
     
     /// <summary>
-    ///     Resources
+    ///  Identity Resources
     /// </summary>
     public IEnumerable<IdentityResource> IdentityResources { get; init; } = ArraySegment<IdentityResource>.Empty;
 }

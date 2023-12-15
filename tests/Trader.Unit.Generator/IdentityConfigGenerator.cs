@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 using Xunit.Abstractions;
-using Duende.IdentityServer.Models;
+using IdentityServer4.Models;
 using Trader.Extensions.Identity.Models;
 using Identity = Trader.Constants.Identity;
 
@@ -124,7 +124,7 @@ public class IdentityConfigGenerator
             
             IdentityResources = new List<IdentityResource>
             {
-                new IdentityResources.Email()
+                new IdentityResources.OpenId()
             }
         };
 
