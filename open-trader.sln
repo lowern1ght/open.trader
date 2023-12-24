@@ -29,24 +29,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trader.Storage.Account", "s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trader.Extensions.Logging", "src\modules\extensions\Trader.Extensions.Logging\Trader.Extensions.Logging.csproj", "{66439E77-36F7-4984-94D9-8A273C9A2FB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trader.IdentityServer", "src\applications\services\Trader.IdentityServer\Trader.IdentityServer.csproj", "{285CBC95-B0AE-4038-8D60-8A6F139D37DE}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trader.Extensions.Identity", "src\modules\extensions\Trader.Extensions.Identity\Trader.Extensions.Identity.csproj", "{5B82218A-A36D-4E40-B450-EB8B7CE832EE}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9070A0C3-A3F1-4A84-86D9-9AF5237EC527}"
-	ProjectSection(SolutionItems) = preProject
-		docker-compose.yml = docker-compose.yml
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{281D6A9E-D9D7-4955-BF4D-4DF32F2C6DBC}"
 	ProjectSection(SolutionItems) = preProject
 		deploy\services\reverse-proxy-compose.yml = deploy\services\reverse-proxy-compose.yml
 		deploy\services\identity-compose.yml = deploy\services\identity-compose.yml
+		deploy\services\inventory-compose.yml = deploy\services\inventory-compose.yml
+		deploy\services\s3-compose.yml = deploy\services\s3-compose.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "init-queries", "init-queries", "{72D22C0D-C37C-4AB1-94A8-3E2D07FAA76F}"
 	ProjectSection(SolutionItems) = preProject
 		deploy\services\init-queries\init-identity.sql = deploy\services\init-queries\init-identity.sql
+		deploy\services\init-queries\init-inventory.sql = deploy\services\init-queries\init-inventory.sql
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "security", "security", "{3F45B138-2A70-45F0-90B0-69C68B08E7F2}"
@@ -58,11 +54,29 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "configurations", "configura
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trader.Models", "src\modules\Trader.Models\Trader.Models.csproj", "{43FC76A4-9603-41CE-81DE-4A1E39815240}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trader.Unit.Generator", "tests\Trader.Unit.Generator\Trader.Unit.Generator.csproj", "{8B20FC22-936A-44AF-9716-590DC71C74DB}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trader.Extensions", "src\modules\extensions\Trader.Extensions\Trader.Extensions.csproj", "{683E1D34-A71F-4369-AAF8-2C40909C094B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trader.Constants", "src\modules\Trader.Constants\Trader.Constants.csproj", "{34A21790-C3C9-48E6-97C6-D3B9FF4CC9CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trader.Futures", "src\applications\services\Trader.Futures\Trader.Futures.csproj", "{A2A34FFC-9524-4D55-BEF6-6BF41CEBDA8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trader.Storage.Futures", "src\storages\Trader.Storage.Futures\Trader.Storage.Futures.csproj", "{5621E24A-2CB6-4574-BAEE-F434FD034C5A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infrastructures", "infrastructures", "{7F360F0C-9368-4361-8645-93C247003702}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trader.Futures.Core", "src\infrastructures\Trader.Futures.Core\Trader.Futures.Core.csproj", "{82192841-21EB-4F0D-B534-6BE63004A038}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trader.Generator", "tests\Trader.Generator\Trader.Generator.csproj", "{BA0DEE4E-A40F-496D-B521-53953843C4B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trader.Storage.Inventory", "src\storages\Trader.Storage.Inventory\Trader.Storage.Inventory.csproj", "{4101AAE1-FB2D-4B2E-AF00-D5330ACCCE4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trader.Services", "src\modules\Trader.Services\Trader.Services.csproj", "{0D345A16-9D53-4C1F-A626-010E8AC1B9C4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "resources", "resources", "{25D3E521-3C87-4203-B3B2-C43BA246F22F}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\resources\deribit.svg = deploy\resources\deribit.svg
+		deploy\resources\deribit-test.svg = deploy\resources\deribit-test.svg
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,16 +93,22 @@ Global
 		{13595C05-9EC0-4FB0-B587-380EE5793113} = {22990DB7-165F-42C6-8F9C-6A3230E465A2}
 		{E26CDF5C-5993-4A61-AAD4-97E519BB527F} = {71723F05-D07D-4CCF-8C9A-169F9B9FAF19}
 		{66439E77-36F7-4984-94D9-8A273C9A2FB7} = {13595C05-9EC0-4FB0-B587-380EE5793113}
-		{285CBC95-B0AE-4038-8D60-8A6F139D37DE} = {BB8504F7-AA43-43B0-AA8D-C28F43C62325}
 		{5B82218A-A36D-4E40-B450-EB8B7CE832EE} = {13595C05-9EC0-4FB0-B587-380EE5793113}
 		{281D6A9E-D9D7-4955-BF4D-4DF32F2C6DBC} = {BD958C62-E499-4E1E-873E-F4320CF4AC73}
 		{72D22C0D-C37C-4AB1-94A8-3E2D07FAA76F} = {281D6A9E-D9D7-4955-BF4D-4DF32F2C6DBC}
 		{3F45B138-2A70-45F0-90B0-69C68B08E7F2} = {281D6A9E-D9D7-4955-BF4D-4DF32F2C6DBC}
 		{1BFF04AD-3969-4F65-85E5-A045F8899325} = {281D6A9E-D9D7-4955-BF4D-4DF32F2C6DBC}
 		{43FC76A4-9603-41CE-81DE-4A1E39815240} = {22990DB7-165F-42C6-8F9C-6A3230E465A2}
-		{8B20FC22-936A-44AF-9716-590DC71C74DB} = {C5838635-BACC-45A5-9F60-021F6D491F55}
 		{683E1D34-A71F-4369-AAF8-2C40909C094B} = {13595C05-9EC0-4FB0-B587-380EE5793113}
 		{34A21790-C3C9-48E6-97C6-D3B9FF4CC9CA} = {22990DB7-165F-42C6-8F9C-6A3230E465A2}
+		{A2A34FFC-9524-4D55-BEF6-6BF41CEBDA8E} = {BB8504F7-AA43-43B0-AA8D-C28F43C62325}
+		{5621E24A-2CB6-4574-BAEE-F434FD034C5A} = {71723F05-D07D-4CCF-8C9A-169F9B9FAF19}
+		{7F360F0C-9368-4361-8645-93C247003702} = {35D479A1-E7BC-4C66-B26C-A627063260DB}
+		{82192841-21EB-4F0D-B534-6BE63004A038} = {7F360F0C-9368-4361-8645-93C247003702}
+		{BA0DEE4E-A40F-496D-B521-53953843C4B0} = {C5838635-BACC-45A5-9F60-021F6D491F55}
+		{4101AAE1-FB2D-4B2E-AF00-D5330ACCCE4D} = {71723F05-D07D-4CCF-8C9A-169F9B9FAF19}
+		{0D345A16-9D53-4C1F-A626-010E8AC1B9C4} = {22990DB7-165F-42C6-8F9C-6A3230E465A2}
+		{25D3E521-3C87-4203-B3B2-C43BA246F22F} = {BD958C62-E499-4E1E-873E-F4320CF4AC73}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{9D117F18-513D-40F3-868F-A4E30A4F1442}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -103,10 +123,6 @@ Global
 		{66439E77-36F7-4984-94D9-8A273C9A2FB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66439E77-36F7-4984-94D9-8A273C9A2FB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66439E77-36F7-4984-94D9-8A273C9A2FB7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{285CBC95-B0AE-4038-8D60-8A6F139D37DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{285CBC95-B0AE-4038-8D60-8A6F139D37DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{285CBC95-B0AE-4038-8D60-8A6F139D37DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{285CBC95-B0AE-4038-8D60-8A6F139D37DE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5B82218A-A36D-4E40-B450-EB8B7CE832EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5B82218A-A36D-4E40-B450-EB8B7CE832EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B82218A-A36D-4E40-B450-EB8B7CE832EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -115,10 +131,6 @@ Global
 		{43FC76A4-9603-41CE-81DE-4A1E39815240}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43FC76A4-9603-41CE-81DE-4A1E39815240}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43FC76A4-9603-41CE-81DE-4A1E39815240}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8B20FC22-936A-44AF-9716-590DC71C74DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8B20FC22-936A-44AF-9716-590DC71C74DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8B20FC22-936A-44AF-9716-590DC71C74DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8B20FC22-936A-44AF-9716-590DC71C74DB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{683E1D34-A71F-4369-AAF8-2C40909C094B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{683E1D34-A71F-4369-AAF8-2C40909C094B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{683E1D34-A71F-4369-AAF8-2C40909C094B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -127,5 +139,29 @@ Global
 		{34A21790-C3C9-48E6-97C6-D3B9FF4CC9CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34A21790-C3C9-48E6-97C6-D3B9FF4CC9CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34A21790-C3C9-48E6-97C6-D3B9FF4CC9CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2A34FFC-9524-4D55-BEF6-6BF41CEBDA8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2A34FFC-9524-4D55-BEF6-6BF41CEBDA8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2A34FFC-9524-4D55-BEF6-6BF41CEBDA8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2A34FFC-9524-4D55-BEF6-6BF41CEBDA8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5621E24A-2CB6-4574-BAEE-F434FD034C5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5621E24A-2CB6-4574-BAEE-F434FD034C5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5621E24A-2CB6-4574-BAEE-F434FD034C5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5621E24A-2CB6-4574-BAEE-F434FD034C5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82192841-21EB-4F0D-B534-6BE63004A038}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82192841-21EB-4F0D-B534-6BE63004A038}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82192841-21EB-4F0D-B534-6BE63004A038}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82192841-21EB-4F0D-B534-6BE63004A038}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA0DEE4E-A40F-496D-B521-53953843C4B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA0DEE4E-A40F-496D-B521-53953843C4B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA0DEE4E-A40F-496D-B521-53953843C4B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA0DEE4E-A40F-496D-B521-53953843C4B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4101AAE1-FB2D-4B2E-AF00-D5330ACCCE4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4101AAE1-FB2D-4B2E-AF00-D5330ACCCE4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4101AAE1-FB2D-4B2E-AF00-D5330ACCCE4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4101AAE1-FB2D-4B2E-AF00-D5330ACCCE4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D345A16-9D53-4C1F-A626-010E8AC1B9C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D345A16-9D53-4C1F-A626-010E8AC1B9C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D345A16-9D53-4C1F-A626-010E8AC1B9C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D345A16-9D53-4C1F-A626-010E8AC1B9C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

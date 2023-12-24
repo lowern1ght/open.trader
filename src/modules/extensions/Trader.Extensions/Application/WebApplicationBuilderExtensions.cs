@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Trader.Constants;
+using Trader.Models.Configuration;
 
 namespace Trader.Extensions.Application;
 
@@ -20,6 +21,7 @@ public static class WebApplicationBuilderExtensions
     public static IServiceCollection AddTraderRouting(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddRouting();
+        serviceCollection.AddControllers();
 
         serviceCollection.Configure<RouteOptions>(options =>
         {
@@ -46,7 +48,7 @@ public static class WebApplicationBuilderExtensions
             options.Cookie.Expiration = TimeSpan.FromDays(30);
             options.Cookie.SameSite = SameSiteMode.Strict;
             options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-            options.Cookie.Name = Cookie.AntiforgeryCookieName;
+            options.Cookie.Name = Cookie.Antiforgery;
         });
 
         return serviceCollection;
@@ -124,19 +126,81 @@ public static class WebApplicationBuilderExtensions
     #endregion
 
     #region Configuration
-    
-    private static readonly string IdentityConfigName = "identity";
-    
+
+    private const string IdentityConfigName = "identity";
+
     /// <summary>
-    /// Add identity(.Environment).json config file
+    ///     Add identity(.Environment).json config file
     /// </summary>
     /// <param name="builder"></param>
     /// <returns></returns>
     public static WebApplicationBuilder AddIdentityConfig(this WebApplicationBuilder builder)
     {
-        var path = IdentityConfigName + (builder.Environment.IsDevelopment() ? ".Development" : String.Empty) + ".json";
+        var path = IdentityConfigName + (builder.Environment.IsDevelopment() ? ".Development" : string.Empty) + ".json";
         builder.Configuration.AddJsonFile(Path.Combine("Configs", path), false, true);
-        
+
+        return builder;
+    }
+
+    #endregion
+
+    #region CookieAuthorization
+
+    /// <summary>
+    ///     Invoke ConfigureApplicationCookie with context parameters
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <returns></returns>
+    public static WebApplicationBuilder ConfigureTraderIdentityCookie(this WebApplicationBuilder builder)
+    {
+        builder.Services.ConfigureApplicationCookie(options =>
+        {
+            options.Cookie.HttpOnly = true;
+            options.Cookie.IsEssential = true;
+            options.Cookie.Name = Cookie.Identity;
+            options.Cookie.SameSite = SameSiteMode.Strict;
+            options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+        });
+
+        return builder;
+    }
+
+    /// <summary>
+    ///     Add to service collection TraderServices
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <exception cref="InvalidOperationException">if dont exists in config file</exception>
+    /// <returns></returns>
+    public static WebApplicationBuilder AddTraderServicesConfig(this WebApplicationBuilder builder)
+    {
+        var traderServices = builder.Configuration
+            .GetSection(nameof(TraderServices))
+            .Get<TraderServices>();
+
+        if (traderServices is null)
+            throw new InvalidOperationException($"{nameof(TraderServices)} dont exists in config file");
+
+        builder.Services.AddSingleton(traderServices);
+
+        return builder;
+    }
+
+    /// <summary>
+    ///     Add to service collection S3Settings
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <exception cref="InvalidOperationException">if dont exists in config file</exception>
+    /// <returns></returns>
+    public static WebApplicationBuilder AddS3Settings(this WebApplicationBuilder builder)
+    {
+        var s3Settings = builder.Configuration
+            .GetSection(nameof(S3Settings))
+            .Get<S3Settings>();
+
+        if (s3Settings is null) throw new InvalidOperationException($"{nameof(S3Settings)} dont exists in config file");
+
+        builder.Services.AddSingleton(s3Settings);
+
         return builder;
     }
 

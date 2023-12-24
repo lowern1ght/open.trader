@@ -18,4 +18,18 @@ public static class ConfigurationExtensions
 
         return identityConfig ?? throw new InvalidOperationException();
     }
+
+    /// <summary>
+    ///     Get IdentityServerConfig to client application
+    /// </summary>
+    /// <param name="configuration"></param>
+    /// <returns></returns>
+    /// <exception cref="InvalidOperationException"></exception>
+    public static IdentityServerConfig IdentityServerConfig(this IConfiguration configuration)
+    {
+        var identityServerConfig = configuration.GetSection(nameof(Models.IdentityServerConfig))
+            .Get<IdentityServerConfig>();
+
+        return identityServerConfig ?? throw new InvalidOperationException();
+    }
 }

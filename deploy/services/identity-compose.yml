@@ -1,15 +1,6 @@
 ﻿version: '3.8'
 
 services:
-  trader.identity-server:
-    image: trader.identity-server
-    restart: always
-    hostname: trader.identity
-    build:
-      context: .
-      dockerfile: .../src/applications/services/Trader.IdentityServer/Dockerfile
-    ports:
-      - "6001:80"
   
   trader.identity-db:
     image: postgres:15.5
@@ -20,4 +11,4 @@ services:
     volumes:
       - ./init-queries/init-identity.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
-      - "6010:5432"
+      - "8010:5432"

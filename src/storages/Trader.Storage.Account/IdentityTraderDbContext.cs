@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Trader.Storage.Account.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Trader.Storage.Account;
 

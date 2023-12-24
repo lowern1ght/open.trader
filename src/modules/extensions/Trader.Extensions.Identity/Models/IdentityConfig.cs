@@ -1,5 +1,5 @@
-﻿using IdentityServer4.Test;
-using IdentityServer4.Models;
+﻿using IdentityServer4.Models;
+using IdentityServer4.Test;
 
 namespace Trader.Extensions.Identity.Models;
 
@@ -10,24 +10,24 @@ public class IdentityConfig
     ///     Test users
     /// </summary>
     public List<TestUser> TestClient { get; init; } = new();
-    
+
     /// <summary>
     ///     Clients settings
     /// </summary>
     public IEnumerable<Client> Clients { get; init; } = ArraySegment<Client>.Empty;
-    
+
     /// <summary>
     ///     Api scopes
     /// </summary>
     public IEnumerable<ApiScope> ApiScopes { get; init; } = ArraySegment<ApiScope>.Empty;
-    
+
     /// <summary>
-    /// Api resources
+    ///     Api resources
     /// </summary>
     public IEnumerable<ApiResource> ApiResources { get; init; } = ArraySegment<ApiResource>.Empty;
-    
+
     /// <summary>
-    ///  Identity Resources
+    ///     Identity Resources
     /// </summary>
     public IEnumerable<IdentityResource> IdentityResources { get; init; } = ArraySegment<IdentityResource>.Empty;
 }

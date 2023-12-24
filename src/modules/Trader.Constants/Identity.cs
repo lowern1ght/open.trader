@@ -23,7 +23,7 @@ public static class Identity
             DisplayName = "Universal Scope"
         };
     }
-    
+
     public static class Clients
     {
         public static readonly ClientDescription WebApi = new()

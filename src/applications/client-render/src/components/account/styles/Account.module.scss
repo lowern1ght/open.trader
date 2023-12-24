@@ -1,0 +1,23 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  justify-content: center;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  width: 300px;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+}
+
+.title_text {
+  opacity: 0.8;
+}
+
+.spin {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

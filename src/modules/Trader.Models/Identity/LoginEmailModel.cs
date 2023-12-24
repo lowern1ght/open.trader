@@ -13,5 +13,5 @@ public class LoginEmailModel : BaseModel
     [DataType(DataType.Password)]
     public required string Password { get; set; }
 
-    public required bool RememberMe { get; set; } = false;
+    [Required] public required bool RememberMe { get; set; } = false;
 }

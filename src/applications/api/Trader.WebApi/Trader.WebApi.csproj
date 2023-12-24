@@ -4,14 +4,37 @@
         <TargetFramework>net7.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\..\modules\STBL.Extensions\STBL.Extensions.csproj"/>
+        <ProjectReference Include="..\..\..\modules\extensions\Trader.Extensions.Logging\Trader.Extensions.Logging.csproj"/>
+        <ProjectReference Include="..\..\..\modules\extensions\Trader.Extensions\Trader.Extensions.csproj"/>
+        <ProjectReference Include="..\..\..\modules\Trader.Constants\Trader.Constants.csproj"/>
+        <ProjectReference Include="..\..\..\modules\Trader.Models\Trader.Models.csproj"/>
+        <ProjectReference Include="..\..\..\modules\Trader.Services\Trader.Services.csproj"/>
+        <ProjectReference Include="..\..\..\storages\Trader.Storage.Account\Trader.Storage.Account.csproj"/>
+        <ProjectReference Include="..\..\..\storages\Trader.Storage.Inventory\Trader.Storage.Inventory.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="IdentityModel" Version="6.2.0"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.14">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="..\..\..\..\.dockerignore">
+            <Link>.dockerignore</Link>
+        </Content>
+        <Content Update="appsettings.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <Content Update="appsettings.Development.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
 
 </Project>

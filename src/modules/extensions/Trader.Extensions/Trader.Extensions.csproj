@@ -18,6 +18,8 @@
 
     <ItemGroup>
         <ProjectReference Include="..\..\Trader.Constants\Trader.Constants.csproj"/>
+        <ProjectReference Include="..\..\Trader.Models\Trader.Models.csproj"/>
+        <ProjectReference Include="..\..\Trader.Services\Trader.Services.csproj"/>
     </ItemGroup>
 
 </Project>
