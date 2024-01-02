@@ -1,25 +1,30 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Trader.Models.Exchange;
-using Trader.Services.Exchange;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Authorization;
+using Trader.Constants.General;
+using Trader.Exchange.Service.Interfaces;
 
 namespace Trader.WebApi.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("/[controller]/")]
+[EnableCors(CorsPolicies.AllowAll)]
 public class ExchangeController : Controller
 {
     private readonly IExchangeService _exchangeService;
+    private readonly IExchangeImageService _imageService;
 
-    public ExchangeController(IExchangeService exchangeService)
+    public ExchangeController(IExchangeService exchangeService, IExchangeImageService imageService)
     {
         _exchangeService = exchangeService;
+        _imageService = imageService;
     }
 
     [HttpGet]
     public async Task<IActionResult> GetAllAsync(CancellationToken token)
     {
-        return Ok((await _exchangeService.CollectionAsync(token)).ToArray());
+        return Ok((await _exchangeService.ListAsync(token)).ToArray());
     }
 
     [HttpGet("id={id:guid}")]
@@ -34,52 +39,18 @@ public class ExchangeController : Controller
         return Ok(await _exchangeService.GetByNameAsync(name, token));
     }
     
-    [HttpGet("{id:guid}/description")]
-    public async Task<IActionResult> DescriptionAsync([FromQuery] Guid id, CancellationToken token)
-    {
-        throw new NotImplementedException();
-    }
+
     
-    [HttpGet("{name}/description")]
-    public async Task<IActionResult> DescriptionAsync([FromQuery] string name, CancellationToken token)
-    {
-        throw new NotImplementedException();
-    }
-    
-    [HttpGet("{id}/image")]
+    [HttpGet("{id:guid}/image")]
     public async Task GetImageById(Guid id, CancellationToken token)
     {
         try
         {
-            await _exchangeService.DownloadImageFromS3(id, Response, token);
+            await _imageService.DownloadImageById(id, token);
         }
         catch (Exception)
         {
             Response.StatusCode = StatusCodes.Status500InternalServerError;
         }
-    }
-
-    [HttpPost("create")]
-    [Authorize(Roles = "Admin")]
-    public async Task<IActionResult> CreateAsync([FromBody] Exchange exchange, CancellationToken token)
-    {
-        await _exchangeService.CreateAsync(exchange, token);
-        return Ok();
-    }
-
-    [HttpPost("delete")]
-    [Authorize(Roles = "Admin")]
-    public async Task<IActionResult> DeleteAsync([FromQuery] Guid id, CancellationToken token)
-    {
-        await _exchangeService.DeleteAsync(id, token);
-        return Ok();
-    }
-
-    [HttpPost("edit")]
-    [Authorize(Roles = "Admin")]
-    public async Task<IActionResult> EditAsync([FromBody] Exchange exchange, CancellationToken token)
-    {
-        await _exchangeService.EditAsync(exchange, token);
-        return Ok();
     }
 }

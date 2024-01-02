@@ -1,6 +1,26 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=521a5f11_002Dc4a9_002D4f5f_002Dab55_002Db11e3ea02317/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GenerateWithGuid" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/CodeInspection/Highlighting/SweaWarningsMode/@EntryValue">ShowAndRun</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=261e5541_002D55b2_002D4a5a_002Dab6d_002D95ff3a6ee13d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GenerateTraderServiceJson #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;xUnit::BA0DEE4E-A40F-496D-B521-53953843C4B0::net7.0::Trader.Generator.GenerateCommon.GenerateTraderServiceJson&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::7B2B2E0F-C108-458E-B6DE-6137190F9D16::net7.0::Trader.Storage.Tests.InventoryStorageShould.AssemblyGetDescriptionTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=452dcf01_002D62de_002D4c49_002D8be9_002Df45ea3f10a12/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GenerateTraderServiceJson" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::BA0DEE4E-A40F-496D-B521-53953843C4B0::net7.0::Trader.Generator.GenerateCommon.GenerateTraderServiceJson&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::7B2B2E0F-C108-458E-B6DE-6137190F9D16::net7.0::Trader.Storage.Tests.InventoryStorageShould.AssemblyGetDescriptionTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=521a5f11_002Dc4a9_002D4f5f_002Dab55_002Db11e3ea02317/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GenerateWithGuid" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::BA0DEE4E-A40F-496D-B521-53953843C4B0::net7.0::Trader.Generator.GenerateCommon.GenerateTraderServiceJson&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::7B2B2E0F-C108-458E-B6DE-6137190F9D16::net7.0::Trader.Storage.Tests.InventoryStorageShould.AssemblyGetDescriptionTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a9f53b28_002D135a_002D4084_002D9263_002D3a76171debf6/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GenerateTraderServiceJson #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::BA0DEE4E-A40F-496D-B521-53953843C4B0::net7.0::Trader.Generator.GenerateCommon.GenerateTraderServiceJson&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::7B2B2E0F-C108-458E-B6DE-6137190F9D16::net7.0::Trader.Storage.Tests.InventoryStorageShould.AssemblyGetDescriptionTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

@@ -13,8 +13,7 @@ public static class ServiceCollectionExtensions
     /// <param name="serviceCollection"></param>
     /// <param name="configuration"></param>
     /// <returns></returns>
-    public static IServiceCollection AddIdentityTraderDbContext(this IServiceCollection serviceCollection,
-        IConfiguration configuration)
+    public static IServiceCollection AddIdentityTraderDbContext(this IServiceCollection serviceCollection, IConfiguration configuration)
     {
         serviceCollection.AddDbContext<IdentityTraderDbContext>(builder =>
         {

@@ -186,7 +186,7 @@ namespace Trader.Storage.Account.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Trader.Storage.Account.Models.User", b =>
+            modelBuilder.Entity("Trader.Storage.Account.Models.TraderUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("text")
@@ -282,7 +282,7 @@ namespace Trader.Storage.Account.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Trader.Storage.Account.Models.User", null)
+                    b.HasOne("Trader.Storage.Account.Models.TraderUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -292,7 +292,7 @@ namespace Trader.Storage.Account.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Trader.Storage.Account.Models.User", null)
+                    b.HasOne("Trader.Storage.Account.Models.TraderUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -309,7 +309,7 @@ namespace Trader.Storage.Account.Migrations
                         .IsRequired()
                         .HasConstraintName("fk_asp_net_user_roles_asp_net_roles_role_id");
 
-                    b.HasOne("Trader.Storage.Account.Models.User", null)
+                    b.HasOne("Trader.Storage.Account.Models.TraderUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -319,7 +319,7 @@ namespace Trader.Storage.Account.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Trader.Storage.Account.Models.User", null)
+                    b.HasOne("Trader.Storage.Account.Models.TraderUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

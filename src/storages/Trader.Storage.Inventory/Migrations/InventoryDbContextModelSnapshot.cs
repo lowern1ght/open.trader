@@ -35,17 +35,23 @@ namespace Trader.Storage.Inventory.Migrations
                         .HasColumnType("character varying(50)")
                         .HasColumnName("base_url");
 
+                    b.Property<string>("DisplayName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)")
+                        .HasColumnName("display_name");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)")
+                        .HasColumnName("name");
+
                     b.Property<string>("ResourceName")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("character varying(50)")
                         .HasColumnName("resource_name");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)")
-                        .HasColumnName("title");
 
                     b.HasKey("Id")
                         .HasName("pk_exchanges");
@@ -55,17 +61,19 @@ namespace Trader.Storage.Inventory.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("978d0c23-e645-4f4c-9f0c-380b09079707"),
+                            Id = new Guid("c72af506-4876-40cc-8b16-0f5036f70143"),
                             BaseUrl = "www.deribit.com",
-                            ResourceName = "deribit.svg",
-                            Title = "deribit"
+                            DisplayName = "Deribit",
+                            Name = "deribit",
+                            ResourceName = "deribit.svg"
                         },
                         new
                         {
-                            Id = new Guid("95362ccf-e10d-4519-b0ab-96a40403f182"),
+                            Id = new Guid("26d46a78-2df8-4a6d-82b7-abb985e773fd"),
                             BaseUrl = "test.deribit.com",
-                            ResourceName = "deribit-test.svg",
-                            Title = "test-deribit"
+                            DisplayName = "Test Deribit",
+                            Name = "test-deribit",
+                            ResourceName = "deribit-test.svg"
                         });
                 });
 #pragma warning restore 612, 618

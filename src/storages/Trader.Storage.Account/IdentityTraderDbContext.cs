@@ -4,7 +4,7 @@ using Trader.Storage.Account.Models;
 
 namespace Trader.Storage.Account;
 
-public sealed class IdentityTraderDbContext : IdentityDbContext<User>
+public sealed class IdentityTraderDbContext : IdentityDbContext<TraderUser>
 {
     public IdentityTraderDbContext(DbContextOptions<IdentityTraderDbContext> options)
         : base(options)

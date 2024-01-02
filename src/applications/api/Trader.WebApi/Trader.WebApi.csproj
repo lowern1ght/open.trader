@@ -8,9 +8,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\..\modules\extensions\Trader.Extensions.Logging\Trader.Extensions.Logging.csproj"/>
+        <ProjectReference Include="..\..\..\dependency\Trader.General.DI\Trader.General.DI.csproj" />
+        <ProjectReference Include="..\..\..\dependency\Trader.WebApi.DI\Trader.WebApi.DI.csproj" />
         <ProjectReference Include="..\..\..\modules\extensions\Trader.Extensions\Trader.Extensions.csproj"/>
+        <ProjectReference Include="..\..\..\modules\services\Trader.Exchange.Service\Trader.Exchange.Service.csproj" />
         <ProjectReference Include="..\..\..\modules\Trader.Constants\Trader.Constants.csproj"/>
+        <ProjectReference Include="..\..\..\modules\Trader.Exceptions\Trader.Exceptions.csproj" />
+        <ProjectReference Include="..\..\..\modules\Trader.Extensions\Trader.Extensions.csproj" />
         <ProjectReference Include="..\..\..\modules\Trader.Models\Trader.Models.csproj"/>
         <ProjectReference Include="..\..\..\modules\Trader.Services\Trader.Services.csproj"/>
         <ProjectReference Include="..\..\..\storages\Trader.Storage.Account\Trader.Storage.Account.csproj"/>
@@ -23,6 +27,13 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.0" />
+        <PackageReference Include="Microsoft.NETCore.Platforms" Version="7.0.4" />
+        <PackageReference Include="Microsoft.NETCore.Targets" Version="5.0.0" />
+        <PackageReference Include="TextExtensions" Version="1.0.0" />
     </ItemGroup>
 
     <ItemGroup>

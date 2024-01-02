@@ -1,9 +1,12 @@
-﻿namespace Trader.Models.Exchange;
+﻿using Trader.Models.Exchange.Interfaces;
+
+namespace Trader.Models.Exchange;
 
 public class Exchange : IExchange
 {
-    public required string ResourceName { get; set; }
     public Guid Id { get; set; }
-    public required string Title { get; set; }
+    public required string Name { get; set; }
     public required string BaseUrl { get; set; }
+    public required string DisplayName { get; set; }
+    public required string ResourceName { get; set; }
 }

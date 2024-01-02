@@ -4,6 +4,7 @@ services:
   trader.s3:
     image: minio/minio
     hostname: trader.s3
+    restart: always
     ports:
       - "10000:10000"
       - "10001:10001"

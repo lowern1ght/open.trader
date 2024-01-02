@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\modules\extensions\Trader.Extensions\Trader.Extensions.csproj" />
+      <ProjectReference Include="..\..\modules\Trader.Constants\Trader.Constants.csproj" />
+      <ProjectReference Include="..\..\modules\Trader.Extensions\Trader.Extensions.csproj" />
+      <ProjectReference Include="..\..\modules\Trader.Services\Trader.Services.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.14" />
+      <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0" />
+    </ItemGroup>
+    
+</Project>

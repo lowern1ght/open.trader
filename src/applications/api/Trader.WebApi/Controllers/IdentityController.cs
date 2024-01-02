@@ -1,10 +1,10 @@
-﻿using System.Text.Json;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
+﻿using Trader.Models.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Trader.Extensions.Others;
-using Trader.Models.Identity;
+using Trader.Services.Identity;
 using Trader.Storage.Account.Models;
+using Microsoft.AspNetCore.Authorization;
+using Trader.Exceptions.Identity;
+using Trader.Extensions.Modules;
 
 namespace Trader.WebApi.Controllers;
 
@@ -12,39 +12,45 @@ namespace Trader.WebApi.Controllers;
 [Route("/[controller]/")]
 public class IdentityController : Controller
 {
-    private readonly SignInManager<User> _signInManager;
-    private readonly UserManager<User> _userManager;
+    private readonly ILogger<IdentityController> _logger;
+    private readonly IIdentityService<TraderUser> _identityService;
 
-    public IdentityController(SignInManager<User> signInManager, UserManager<User> userManager)
+    public IdentityController(IIdentityService<TraderUser> identityService, ILogger<IdentityController> logger)
     {
-        _userManager = userManager;
-        _signInManager = signInManager;
+        _logger = logger;
+        _identityService = identityService;
     }
 
     /// <summary>
     ///     Login user
     /// </summary>
     /// <param name="model"></param>
+    /// <param name="token"></param>
     /// <returns></returns>
     [AllowAnonymous]
     [HttpPost("login")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> LoginAsync(LoginEmailModel model)
+    public async Task<IActionResult> LoginAsync([FromBody] LoginModel model, CancellationToken token)
     {
-        if (!ModelState.IsValid) return BadRequest(ModelState.ToData());
+        if (!ModelState.IsValid) 
+            return ValidationProblem(ModelState);
 
-        var user = await _userManager.FindByEmailAsync(model.Email);
-
-        if (user is null) return NotFound(nameof(model.Email));
-
-        var result = await _signInManager.PasswordSignInAsync(user, model.Password,
-            model.RememberMe, false);
-
-        if (!result.Succeeded) return StatusCode(StatusCodes.Status500InternalServerError);
-
-        return Ok();
+        try
+        {
+            return Ok(await _identityService.LoginAsync(model, token));
+        }
+        catch (IdentityException identityException)
+        {
+            _logger.Log(LogLevel.Error, identityException.Message);
+            return Forbid(identityException.Message);
+        }
+        catch (Exception exception)
+        {
+            _logger.Log(LogLevel.Error, "Unhandled exception: {ExceptionMessage}", exception.Message);
+            return StatusCode(StatusCodes.Status500InternalServerError);
+        }
     }
 
     /// <summary>
@@ -55,17 +61,9 @@ public class IdentityController : Controller
     [HttpPost("logout")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> LogoutAsync()
+    public async Task<IActionResult> LogoutAsync(CancellationToken token)
     {
-        try
-        {
-            await _signInManager.SignOutAsync();
-        }
-        catch (Exception exception)
-        {
-            return Problem(exception.Message);
-        }
-
+        await _identityService.LogoutAsync(token);
         return Ok();
     }
 
@@ -73,35 +71,28 @@ public class IdentityController : Controller
     ///     Register new user
     /// </summary>
     /// <param name="model"></param>
+    /// <param name="token"></param>
     /// <returns></returns>
     [AllowAnonymous]
     [HttpPost("register")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> RegisterAsync(RegisterEmailModel model)
+    public async Task<IActionResult> RegisterAsync(RegisterModel model, CancellationToken token)
     {
-        if (!ModelState.IsValid) return BadRequest(ModelState.ToData());
+        if (!ModelState.IsValid) 
+            return ValidationProblem(ModelState);
 
-        var emailAsync = await _userManager.FindByEmailAsync(model.Email);
-
-        if (emailAsync is not null) return Problem($"{nameof(model.Email)} is exists");
-
-        var nameAsync = await _userManager.FindByNameAsync(model.Username);
-
-        if (nameAsync is not null) return Problem($"{nameof(model.Username)} is exists");
-
-        var user = new User
+        try
         {
-            Email = model.Email,
-            UserName = model.Username
-        };
+            await _identityService.RegisterAsync(model, token);
+        }
+        catch (Exception exception)
+        {
+            return Problem(exception.Message);
+        }
 
-        var result = await _userManager.CreateAsync(user, model.Password);
-
-        return !result.Succeeded
-            ? Problem(JsonSerializer.Serialize(result.Errors.Select(error => error.Description)))
-            : Ok();
+        return Ok();
     }
 
     /// <summary>
