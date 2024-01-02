@@ -1,6 +1,6 @@
 using System.Text.Json;
-using Trader.Helpers.Exchange;
 using Xunit.Abstractions;
+using Trader.Helpers.Exchange;
 
 namespace Trader.Storage.Tests;
 

@@ -12,9 +12,9 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\modules\extensions\Trader.Extensions\Trader.Extensions.csproj" />
+      <ProjectReference Include="..\..\modules\services\Trader.Identity.Service\Trader.Identity.Service.csproj" />
       <ProjectReference Include="..\..\modules\Trader.Constants\Trader.Constants.csproj" />
       <ProjectReference Include="..\..\modules\Trader.Extensions\Trader.Extensions.csproj" />
-      <ProjectReference Include="..\..\modules\Trader.Services\Trader.Services.csproj" />
     </ItemGroup>
 
     <ItemGroup>

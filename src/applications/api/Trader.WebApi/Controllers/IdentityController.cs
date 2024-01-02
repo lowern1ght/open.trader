@@ -1,10 +1,10 @@
 ﻿using Trader.Models.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Trader.Services.Identity;
 using Trader.Storage.Account.Models;
 using Microsoft.AspNetCore.Authorization;
 using Trader.Exceptions.Identity;
 using Trader.Extensions.Modules;
+using Trader.Identity.Service.Interfaces;
 
 namespace Trader.WebApi.Controllers;
 

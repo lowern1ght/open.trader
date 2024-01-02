@@ -24,8 +24,8 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\src\modules\Trader.Helpers\Trader.Helpers.csproj" />
       <ProjectReference Include="..\..\src\modules\Trader.Models\Trader.Models.csproj" />
-      <ProjectReference Include="..\..\src\modules\Trader.Services\Trader.Services.csproj" />
     </ItemGroup>
 
 </Project>
