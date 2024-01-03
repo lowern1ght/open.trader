@@ -1,8 +1,9 @@
-﻿using System.Net;
-using Microsoft.Extensions.DependencyInjection;
-using Minio;
-using Trader.Exchange.Service.Interfaces;
+﻿using Minio;
+using System.Net;
 using Trader.Models.Configuration;
+using Trader.Exchange.Service.Clients;
+using Trader.Exchange.Service.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Trader.Exchange.Service.Dependency;
 
@@ -21,7 +22,7 @@ public static class ServiceCollectionExtensions
                                                SecurityProtocolType.Tls11 |
                                                SecurityProtocolType.Tls12 |
                                                SecurityProtocolType.Tls13;
-
+        
         collection.AddScoped<IMinioClient, MinioClient>(provider =>
         {
             var s3Settings = provider.GetRequiredService<S3Settings>();
@@ -33,6 +34,7 @@ public static class ServiceCollectionExtensions
                 .Build();
         });
         
+        collection.AddScoped<IExchangeClient, ExchangeClient>();
         collection.AddScoped<IExchangeService, ExchangeService>();
         collection.AddScoped<IExchangeImageService, ExchangeImageService>();
         

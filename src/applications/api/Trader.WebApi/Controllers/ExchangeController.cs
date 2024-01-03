@@ -24,29 +24,15 @@ public class ExchangeController : Controller
     [HttpGet]
     public async Task<IActionResult> GetAllAsync(CancellationToken token)
     {
-        return Ok((await _exchangeService.ListAsync(token)).ToArray());
-    }
-
-    [HttpGet("id={id:guid}")]
-    public async Task<IActionResult> FindAsync([FromQuery] Guid id, CancellationToken token)
-    {
-        return Ok(await _exchangeService.GetByIdAsync(id, token));
+        return Ok((await _exchangeService.CollectionAsync(token)).ToArray());
     }
     
-    [HttpGet("name={name}")]
-    public async Task<IActionResult> FindAsync([FromQuery] string name, CancellationToken token)
-    {
-        return Ok(await _exchangeService.GetByNameAsync(name, token));
-    }
-    
-
-    
-    [HttpGet("{id:guid}/image")]
-    public async Task GetImageById(Guid id, CancellationToken token)
+    [HttpGet("{name}/image")]
+    public async Task GetImageById(string name, CancellationToken token)
     {
         try
         {
-            await _imageService.DownloadImageById(id, token);
+            await _imageService.DownloadImageByName(name, token);
         }
         catch (Exception)
         {

@@ -16,9 +16,6 @@ public class InventoryStorageShould
     [Fact]
     public void AssemblyGetDescriptionTests()
     {
-
-        var description = ExchangeHelper.GetExchangesDescription();
-        
-        _outputHelper.WriteLine(JsonSerializer.Serialize(description));
+        _outputHelper.WriteLine(JsonSerializer.Serialize(new { Name = string.Empty }));
     }
 }

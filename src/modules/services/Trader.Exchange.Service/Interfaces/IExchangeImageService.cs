@@ -2,5 +2,5 @@
 
 public interface IExchangeImageService
 {
-    Task DownloadImageById(Guid id, CancellationToken token);
+    Task DownloadImageByName(string fileName, CancellationToken token);
 }

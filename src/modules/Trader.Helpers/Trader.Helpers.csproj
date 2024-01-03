@@ -15,6 +15,7 @@
       <ProjectReference Include="..\..\storages\Trader.Storage.Account\Trader.Storage.Account.csproj" />
       <ProjectReference Include="..\Trader.Exceptions\Trader.Exceptions.csproj" />
       <ProjectReference Include="..\Trader.Models\Trader.Models.csproj" />
+      <ProjectReference Include="..\Trader.Pattern\Trader.Pattern.csproj" />
     </ItemGroup>
 
     <ItemGroup>

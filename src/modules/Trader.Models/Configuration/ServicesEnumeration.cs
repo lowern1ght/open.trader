@@ -3,5 +3,6 @@
 public enum ServicesEnumeration
 {
     Futures,
-    Options
+    Options,
+    Exchanges
 }

@@ -30,4 +30,8 @@
         <ProjectReference Include="..\..\modules\Trader.Models\Trader.Models.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Models\" />
+    </ItemGroup>
+
 </Project>

@@ -101,6 +101,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trader.Futures.Core", "src\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trader.Identity.Service", "src\modules\services\Trader.Identity.Service\Trader.Identity.Service.csproj", "{F830E89F-30C7-4F70-A423-01BB58E0F609}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trader.Pattern", "src\modules\Trader.Pattern\Trader.Pattern.csproj", "{0498CE66-DFCF-4B11-A16D-F9B20E9B5076}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -143,6 +145,7 @@ Global
 		{516F8BDD-2D21-42B5-8599-467BD7BCFF39} = {7F360F0C-9368-4361-8645-93C247003702}
 		{3D3C23F2-63FB-4E81-91ED-0C7C98FC78F1} = {516F8BDD-2D21-42B5-8599-467BD7BCFF39}
 		{F830E89F-30C7-4F70-A423-01BB58E0F609} = {665BA256-F6BB-4C62-9A41-D94BE3CAEAE2}
+		{0498CE66-DFCF-4B11-A16D-F9B20E9B5076} = {22990DB7-165F-42C6-8F9C-6A3230E465A2}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{9D117F18-513D-40F3-868F-A4E30A4F1442}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -229,5 +232,9 @@ Global
 		{F830E89F-30C7-4F70-A423-01BB58E0F609}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F830E89F-30C7-4F70-A423-01BB58E0F609}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F830E89F-30C7-4F70-A423-01BB58E0F609}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0498CE66-DFCF-4B11-A16D-F9B20E9B5076}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0498CE66-DFCF-4B11-A16D-F9B20E9B5076}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0498CE66-DFCF-4B11-A16D-F9B20E9B5076}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0498CE66-DFCF-4B11-A16D-F9B20E9B5076}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
