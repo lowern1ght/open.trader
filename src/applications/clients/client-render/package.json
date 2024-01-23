@@ -38,6 +38,7 @@
     "@types/ts-nameof": "^4.2.5",
     "css-loader": "^6.8.1",
     "sass": "^1.69.5",
+    "swr": "^2.2.4",
     "ts-nameof": "^5.0.0",
     "vite-plugin-mkcert": "^1.17.1"
   }

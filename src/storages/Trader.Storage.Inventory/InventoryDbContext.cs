@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Trader.Storage.Inventory.Models;
 
 namespace Trader.Storage.Inventory;
 
@@ -9,4 +10,6 @@ public sealed class InventoryDbContext : DbContext
     {
         Database.Migrate();
     }
+
+    public DbSet<DeribitSecret> DeribitSecrets { get; set; } = null!;
 }

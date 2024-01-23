@@ -1,22 +1,20 @@
-import {useEffect, useState} from "react";
 import {Content, Footer} from "antd/es/layout/layout";
-import {LogoComponents} from "../common/LogoComponents.tsx";
 import {ThemeSwitcher} from "../account/ThemeSwitcher.tsx";
-import {ExchangeClient} from "../../clients/ExchangeClient.ts";
+import {LogoComponents} from "../common/LogoComponents.tsx";
+import {useExchanges} from "../../clients/webApiClients.ts";
 import {ExchangeCardComponent} from "./ExchangeCardComponent.tsx";
-import {ExchangeModel} from "../../clients/models/ExchangeModels.ts";
-import {Col, Divider, Layout, Row, Space, Spin, Typography, FloatButton} from "antd";
+import {Col, Divider, Layout, Row, Space, Spin, Typography, FloatButton, Result} from "antd";
 
 export const ExchangeChoose = () => {
-    const [data, setData] = useState([] as ExchangeModel[])
+    const { data, error, isLoading } = useExchanges()
 
-    useEffect(() => {
-        ExchangeClient.all()
-            .then(models => {
-                setData(models)
-            })
-            .catch(() => setData([]))
-    }, []);
+    if (error) {
+        return <Result
+            title={error.name}
+            status={"error"}
+            subTitle={error.message}
+        />
+    }
 
     return (
         <Layout style={{height: '100%'}}>
@@ -38,18 +36,19 @@ export const ExchangeChoose = () => {
 
                 <Divider>Exchanges</Divider>
 
-                <Spin spinning={data.length==0} size={"large"}>
+                <Spin spinning={isLoading} size={"large"}>
                     <Row wrap style={{ display: 'flex', justifyContent: 'space-evenly', width: '100%' }}>
-                        {data.map((model, index) => {
-                            return (
-                                <Col key={index} span={'auto'} flex={'auto'} style={{margin: '10px'}}>
-                                    <ExchangeCardComponent exchange={model}/>
-                                </Col>
-                            )
-                        })}
+                        {data != undefined
+                            ? data.map((model, index) => {
+                                return (
+                                    <Col key={index} span={'auto'} flex={'auto'} style={{margin: '10px'}}>
+                                        <ExchangeCardComponent exchange={model}/>
+                                    </Col>)
+                                })
+                            : <div>Ops... some wrong</div>
+                        }
                     </Row>
                 </Spin>
-
             </Content>
 
             <Footer>

@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\..\modules\Trader.Extensions\Trader.Extensions.csproj" />
       <ProjectReference Include="..\..\..\modules\Trader.Helpers\Trader.Helpers.csproj" />
       <ProjectReference Include="..\..\Trader.Enums\Trader.Enums.csproj" />
       <ProjectReference Include="..\Trader.Client\Trader.Client.csproj" />
@@ -14,6 +15,8 @@
 
     <ItemGroup>
       <PackageReference Include="Flurl.Http" Version="4.0.0" />
+      <PackageReference Include="Mapster" Version="7.4.0" />
+      <PackageReference Include="Polly" Version="8.2.0" />
     </ItemGroup>
 
 </Project>

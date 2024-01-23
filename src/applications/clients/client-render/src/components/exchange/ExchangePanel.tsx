@@ -6,7 +6,7 @@ import {LoadingPage} from "../../pages/LoadingPage.tsx";
 import {Layout, Space, Button, theme} from "antd";
 import {Navigate} from "react-router-dom";
 import {RouteViews} from "../../modules/RouteConfig.tsx";
-import {IdentityClient} from "../../clients/IdentityClient.ts";
+import {WebApiClients} from "../../clients/webApiClients.ts";
 import {HeaderPanel} from "../common/HeaderPanel.tsx";
 import Sider from "antd/es/layout/Sider";
 import {Content} from "antd/es/layout/layout";
@@ -36,7 +36,7 @@ export const ExchangePanel = () => {
     const [user, setUser] = useState({} as IUserInfo | null)
 
     useEffect(() => {
-        IdentityClient.info()
+        WebApiClients.info()
             .then(value => setUser(value.data))
             .catch(() => setUser(null))
     }, []);

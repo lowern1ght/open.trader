@@ -10,4 +10,10 @@
       <ProjectReference Include="..\Trader.Models\Trader.Models.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Dependency\" />
+      <Folder Include="Models\Deribit\" />
+      <Folder Include="Services\" />
+    </ItemGroup>
+
 </Project>

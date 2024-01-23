@@ -22,59 +22,33 @@ namespace Trader.Storage.Inventory.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Trader.Storage.Inventory.Models.Exchange", b =>
+            modelBuilder.Entity("Trader.Storage.Inventory.Models.DeribitSecret", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
                         .HasColumnName("id");
 
-                    b.Property<string>("BaseUrl")
+                    b.Property<string>("Key")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)")
-                        .HasColumnName("base_url");
+                        .HasMaxLength(250)
+                        .HasColumnType("character varying(250)")
+                        .HasColumnName("key");
 
-                    b.Property<string>("DisplayName")
+                    b.Property<string>("Secret")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)")
-                        .HasColumnName("display_name");
+                        .HasMaxLength(250)
+                        .HasColumnType("character varying(250)")
+                        .HasColumnName("secret");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)")
-                        .HasColumnName("name");
-
-                    b.Property<string>("ResourceName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)")
-                        .HasColumnName("resource_name");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("user_id");
 
                     b.HasKey("Id")
-                        .HasName("pk_exchanges");
+                        .HasName("pk_deribit_secrets");
 
-                    b.ToTable("exchanges", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("c72af506-4876-40cc-8b16-0f5036f70143"),
-                            BaseUrl = "www.deribit.com",
-                            DisplayName = "Deribit",
-                            Name = "deribit",
-                            ResourceName = "deribit.svg"
-                        },
-                        new
-                        {
-                            Id = new Guid("26d46a78-2df8-4a6d-82b7-abb985e773fd"),
-                            BaseUrl = "test.deribit.com",
-                            DisplayName = "Test Deribit",
-                            Name = "test-deribit",
-                            ResourceName = "deribit-test.svg"
-                        });
+                    b.ToTable("deribit_secrets", (string)null);
                 });
 #pragma warning restore 612, 618
         }

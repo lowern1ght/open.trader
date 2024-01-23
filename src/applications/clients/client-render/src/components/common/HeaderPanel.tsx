@@ -3,7 +3,7 @@ import {Header} from "antd/es/layout/layout";
 import {LoginOutlined} from "@ant-design/icons";
 import {IUserInfo} from "../../models/Identity.ts";
 import styles from './styles/HeaderPanel.module.css'
-import {IdentityClient} from "../../clients/IdentityClient.ts";
+import {WebApiClients} from "../../clients/webApiClients.ts";
 import {useState} from "react";
 import {RouteViews} from "../../modules/RouteConfig.tsx";
 import {Navigate} from "react-router-dom";
@@ -16,7 +16,7 @@ export const HeaderPanel = ({ user } : {user : IUserInfo}) => {
     const [logout, setLogout] = useState(false)
 
     const clickLogout = () => {
-        IdentityClient.logoutAsync()
+        WebApiClients.logoutAsync()
             .then(value => console.log(value))
 
         setLogout(true)

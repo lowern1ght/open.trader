@@ -9,9 +9,9 @@ namespace Trader.Exchange.Service;
 public class ExchangeImageService : IExchangeImageService
 {
     private readonly IMinioClient _minioClient;
-    private readonly HttpContextAccessor _contextAccessor;
+    private readonly IHttpContextAccessor _contextAccessor;
 
-    public ExchangeImageService(IMinioClient minioClient, HttpContextAccessor contextAccessor)
+    public ExchangeImageService(IMinioClient minioClient, IHttpContextAccessor contextAccessor)
     {
         _minioClient = minioClient;
         _contextAccessor = contextAccessor;

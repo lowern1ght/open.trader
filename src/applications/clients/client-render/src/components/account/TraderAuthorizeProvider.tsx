@@ -1,5 +1,5 @@
 import {JSX, useEffect, useState} from "react";
-import {IdentityHelper} from "../../clients/IdentityClient.ts";
+import {IdentityHelper} from "../../clients/webApiClients.ts";
 
 export interface ITraderAuthorizeProvider {
     children: JSX.Element | JSX.Element[],

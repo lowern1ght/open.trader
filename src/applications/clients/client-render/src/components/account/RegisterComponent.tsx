@@ -3,7 +3,7 @@ import {Link, Navigate} from "react-router-dom";
 import accountStyles from "./styles/Account.module.css"
 import {RouteViews} from "../../modules/RouteConfig.tsx";
 import {IRegisterModel} from "../../models/Identity.ts";
-import {IdentityClient} from "../../clients/IdentityClient.ts";
+import {WebApiClients} from "../../clients/webApiClients.ts";
 import {Button, Card, Divider, Form, Input, notification, Spin, Typography} from "antd";
 import {IAccountComponent} from "../../interfaces/IAccountComponent.tsx";
 import {LockOutlined, MailOutlined, UserOutlined} from "@ant-design/icons";
@@ -25,7 +25,7 @@ export const RegisterComponent = () : IAccountComponent => {
     const onFinish = async (model: IRegisterModel) => {
         setLoading(true)
 
-        let response = await IdentityClient.register(model);
+        let response = await WebApiClients.register(model);
 
         if (response.status == 200)
             setRegister(true)

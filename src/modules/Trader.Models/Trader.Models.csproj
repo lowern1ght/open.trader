@@ -18,6 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\infrastructures\Trader.Enums\Trader.Enums.csproj" />
       <ProjectReference Include="..\Trader.Constants\Trader.Constants.csproj" />
     </ItemGroup>
 
