@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Trader.Exceptions.Identity;
 using Trader.Helpers.Identity;
 using Trader.Helpers.JwtToken;
 using Trader.Identity.Service.Interfaces;
@@ -45,7 +44,7 @@ public class IdentityService : IIdentityService<TraderUser>
     /// <param name="model"></param>
     /// <param name="token"></param>
     /// <returns></returns>
-    /// <exception cref="IdentityException"></exception>
+    /// <exception cref="Exception"></exception>
     /// <exception cref="InvalidOperationException"></exception>
     public async Task<TokenResult> LoginAsync(LoginModel model, CancellationToken token)
     {
@@ -53,7 +52,7 @@ public class IdentityService : IIdentityService<TraderUser>
 
         if (traderUser is null)
         {
-            throw new IdentityException($"User {model.Email} not found");
+            throw new Exception($"User {model.Email} not found");
         }
 
         if (_contextAccessor.HttpContext is null)
@@ -79,7 +78,7 @@ public class IdentityService : IIdentityService<TraderUser>
 
         if (traderUsers.Length != 0)
         {
-            throw new IdentityException($"{model.Email}, {model.Username} is exists in application");
+            throw new Exception($"{model.Email}, {model.Username} is exists in application");
         }
         
         var user = new TraderUser
@@ -92,7 +91,7 @@ public class IdentityService : IIdentityService<TraderUser>
 
         if (!result.Succeeded)
         {
-            throw new IdentityException(JsonSerializer.Serialize(result.Errors.ToArray()));
+            throw new Exception(JsonSerializer.Serialize(result.Errors.ToArray()));
         }
     }
 

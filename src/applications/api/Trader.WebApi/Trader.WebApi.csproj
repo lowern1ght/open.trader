@@ -12,11 +12,9 @@
         <ProjectReference Include="..\..\..\dependency\Trader.WebApi.DI\Trader.WebApi.DI.csproj" />
         <ProjectReference Include="..\..\..\modules\services\Trader.Exchange.Service\Trader.Exchange.Service.csproj" />
         <ProjectReference Include="..\..\..\modules\Trader.Constants\Trader.Constants.csproj"/>
-        <ProjectReference Include="..\..\..\modules\Trader.Exceptions\Trader.Exceptions.csproj" />
         <ProjectReference Include="..\..\..\modules\Trader.Extensions\Trader.Extensions.csproj" />
         <ProjectReference Include="..\..\..\modules\Trader.Models\Trader.Models.csproj"/>
         <ProjectReference Include="..\..\..\storages\Trader.Storage.Account\Trader.Storage.Account.csproj"/>
-        <ProjectReference Include="..\..\..\storages\Trader.Storage.Inventory\Trader.Storage.Inventory.csproj"/>
     </ItemGroup>
 
     <ItemGroup>

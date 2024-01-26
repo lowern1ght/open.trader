@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Trader.Storage.Account.Models;
 using Microsoft.AspNetCore.Authorization;
-using Trader.Exceptions.Identity;
 using Trader.Extensions.Modules;
 using Trader.Identity.Service.Interfaces;
 
@@ -40,11 +39,6 @@ public class IdentityController : Controller
         try
         {
             return Ok(await _identityService.LoginAsync(model, token));
-        }
-        catch (IdentityException identityException)
-        {
-            _logger.Log(LogLevel.Error, identityException.Message);
-            return Forbid(identityException.Message);
         }
         catch (Exception exception)
         {

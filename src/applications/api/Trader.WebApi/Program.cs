@@ -1,9 +1,8 @@
 using Trader.Constants.General;
-using Trader.Exchange.Service.Dependency;
 using Trader.General.DI.Common;
 using Trader.WebApi.DI.Identity;
 using Trader.Storage.Account.Extensions;
-using Trader.Storage.Inventory.Extensions;
+using Trader.Exchange.Service.Dependency;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +13,6 @@ builder.Services.AddTraderAntiforgery();
 
 #region DbContexts
 
-builder.Services.AddInventoryDbContext(builder.Configuration);
 builder.Services.AddIdentityTraderDbContext(builder.Configuration);
 
 #endregion
