@@ -1,8 +1,8 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+﻿using System.Text;
 using System.Security.Claims;
-using System.Text;
+using Trader.Configuration.Models;
 using Microsoft.IdentityModel.Tokens;
-using Trader.Models.Configuration;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace Trader.Helpers.JwtToken;
 

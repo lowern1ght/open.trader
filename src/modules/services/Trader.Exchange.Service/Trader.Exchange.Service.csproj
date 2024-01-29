@@ -12,6 +12,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\storages\Trader.Storage.Inventory\Trader.Storage.Inventory.csproj" />
+      <ProjectReference Include="..\..\Trader.Configuration\Trader.Configuration.csproj" />
     </ItemGroup>
 
     <ItemGroup>

@@ -1,4 +1,4 @@
-﻿using Trader.Models.Configuration;
+﻿using Trader.Configuration.Models;
 
 namespace Trader.Extensions.Modules;
 
@@ -13,7 +13,7 @@ public static class TraderServiceExtensions
     public static TraderServiceDescription GetFuturesDescription(this TraderServices traderServices)
     {
         var keyValuePair = traderServices.Urls.FirstOrDefault(description =>
-            description.Key == nameof(ServicesEnumeration.Futures));
+            description.Key == nameof(Sections.Futures));
 
         return new TraderServiceDescription
         {
@@ -31,7 +31,7 @@ public static class TraderServiceExtensions
     public static TraderServiceDescription GetOptionsDescription(this TraderServices traderServices)
     {
         var keyValuePair = traderServices.Urls.FirstOrDefault(description =>
-            description.Key == nameof(ServicesEnumeration.Options));
+            description.Key == nameof(Sections.Options));
 
         return new TraderServiceDescription
         {

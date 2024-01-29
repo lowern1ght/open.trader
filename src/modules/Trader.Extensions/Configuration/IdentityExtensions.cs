@@ -1,4 +1,4 @@
-﻿using Trader.Models.Configuration;
+﻿using Trader.Configuration.Models;
 using Microsoft.Extensions.Configuration;
 
 namespace Trader.Extensions.Configuration;

@@ -1,13 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Trader.Constants.General;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Antiforgery;
-using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Antiforgery;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.DependencyInjection;
-using Trader.Constants.General;
-using Trader.Models.Configuration;
 
 namespace Trader.General.DI.Common;
 

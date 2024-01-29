@@ -1,6 +1,6 @@
 ﻿using Flurl;
 using Flurl.Http;
-using Trader.Models.Configuration;
+using Trader.Configuration.Models;
 using Trader.Exchange.Service.Interfaces;
 
 namespace Trader.Exchange.Service.Clients;
@@ -22,8 +22,10 @@ public class ExchangeClient : IExchangeClient
     public async Task<IEnumerable<Models.Exchange>> GetCollectionAsync(CancellationToken token)
     {
         token.ThrowIfCancellationRequested();
+
+        throw new NotImplementedException();
         
-        return await _traderServices.Urls[nameof(ServicesEnumeration.Exchanges)]
+        return await _traderServices.Urls[nameof(Sections.Futures)]
             .AppendPathSegment(Constants.Clients.ExchangeClient.CollectionAll)
             .GetJsonAsync<IEnumerable<Models.Exchange>>(cancellationToken: token);
     }

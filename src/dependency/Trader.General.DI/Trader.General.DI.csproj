@@ -17,6 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\modules\Trader.Configuration\Trader.Configuration.csproj" />
       <ProjectReference Include="..\..\modules\Trader.Models\Trader.Models.csproj" />
     </ItemGroup>
     

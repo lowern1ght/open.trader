@@ -1,9 +1,9 @@
 ﻿using Minio;
 using System.Net;
-using Trader.Models.Configuration;
 using Trader.Exchange.Service.Clients;
 using Trader.Exchange.Service.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
+using Trader.Configuration.Models;
 
 namespace Trader.Exchange.Service.Dependency;
 

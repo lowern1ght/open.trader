@@ -18,11 +18,13 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\infrastructures\models\Trader.Enums\Trader.Enums.csproj" />
       <ProjectReference Include="..\..\infrastructures\Trader.Enums\Trader.Enums.csproj" />
       <ProjectReference Include="..\Trader.Constants\Trader.Constants.csproj" />
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Configuration\" />
       <Folder Include="Futures\" />
     </ItemGroup>
 

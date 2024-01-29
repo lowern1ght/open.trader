@@ -1,4 +1,4 @@
-﻿using Trader.Models.Configuration;
+﻿using Trader.Constants.Configuration;
 
 namespace Trader.Pattern.Attributes;
 
@@ -6,6 +6,6 @@ namespace Trader.Pattern.Attributes;
 public class PatternMetaAttribute : Attribute
 {
     public required string Name { get; init; }
-    public required ServicesEnumeration ServicesEnumeration { get; init; }
     public required Type ProviderType { get; init; }
+    public required Sections ServicesEnumeration { get; init; }
 }

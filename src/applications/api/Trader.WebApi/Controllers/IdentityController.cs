@@ -28,9 +28,6 @@ public class IdentityController : Controller
     /// <returns></returns>
     [AllowAnonymous]
     [HttpPost("login")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
-    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> LoginAsync([FromBody] LoginModel model, CancellationToken token)
     {
         if (!ModelState.IsValid) 
@@ -53,8 +50,6 @@ public class IdentityController : Controller
     /// <returns></returns>
     [Authorize]
     [HttpPost("logout")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> LogoutAsync(CancellationToken token)
     {
         await _identityService.LogoutAsync(token);
@@ -69,9 +64,6 @@ public class IdentityController : Controller
     /// <returns></returns>
     [AllowAnonymous]
     [HttpPost("register")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> RegisterAsync(RegisterModel model, CancellationToken token)
     {
         if (!ModelState.IsValid) 
@@ -95,7 +87,6 @@ public class IdentityController : Controller
     /// <returns></returns>
     [HttpGet]
     [Authorize]
-    [ProducesResponseType(StatusCodes.Status200OK)]
     public Task<IActionResult> InfoAsync()
     {
         return Task.FromResult<IActionResult>(Json(HttpContext.User.Claims.ToData()));

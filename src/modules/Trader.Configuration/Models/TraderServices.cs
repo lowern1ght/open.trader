@@ -1,4 +1,4 @@
-﻿namespace Trader.Models.Configuration;
+﻿namespace Trader.Configuration.Models;
 
 public class TraderServices
 {
