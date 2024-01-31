@@ -6,12 +6,10 @@ import {LoadingPage} from "../../pages/LoadingPage.tsx";
 import {Layout, Space, Button, theme} from "antd";
 import {Navigate} from "react-router-dom";
 import {RouteViews} from "../../modules/RouteConfig.tsx";
-import {WebApiClients} from "../../clients/webApiClients.ts";
 import {HeaderPanel} from "../common/HeaderPanel.tsx";
 import Sider from "antd/es/layout/Sider";
 import {Content} from "antd/es/layout/layout";
 import styles from './styles/ExchangePanel.module.css'
-import {generateNeutralColorPalettes} from "antd/es/theme/themes/dark/colors";
 import {MenuFoldOutlined, MenuUnfoldOutlined} from "@ant-design/icons";
 
 const { useToken } = theme;

@@ -1,9 +1,9 @@
-﻿using Trader.Models.Identity;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Trader.Storage.Account.Models;
 using Microsoft.AspNetCore.Authorization;
-using Trader.Extensions.Modules;
+using Trader.Identity.Service.Extensions;
 using Trader.Identity.Service.Interfaces;
+using Trader.Identity.Service.Models;
 
 namespace Trader.WebApi.Controllers;
 

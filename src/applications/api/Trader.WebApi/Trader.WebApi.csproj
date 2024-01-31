@@ -10,8 +10,9 @@
     <ItemGroup>
         <ProjectReference Include="..\..\..\dependency\Trader.General.DI\Trader.General.DI.csproj" />
         <ProjectReference Include="..\..\..\dependency\Trader.WebApi.DI\Trader.WebApi.DI.csproj" />
+        <ProjectReference Include="..\..\..\infrastructures\services\Trader.Exchange.Service\Trader.Exchange.Service.csproj" />
+        <ProjectReference Include="..\..\..\infrastructures\services\Trader.Identity.Service\Trader.Identity.Service.csproj" />
         <ProjectReference Include="..\..\..\modules\services\Trader.Exchange.Service\Trader.Exchange.Service.csproj" />
-        <ProjectReference Include="..\..\..\modules\Trader.Constants\Trader.Constants.csproj"/>
         <ProjectReference Include="..\..\..\modules\Trader.Extensions\Trader.Extensions.csproj" />
         <ProjectReference Include="..\..\..\modules\Trader.Models\Trader.Models.csproj"/>
         <ProjectReference Include="..\..\..\storages\Trader.Storage.Account\Trader.Storage.Account.csproj"/>

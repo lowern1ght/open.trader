@@ -11,9 +11,10 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\modules\services\Trader.Identity.Service\Trader.Identity.Service.csproj" />
-      <ProjectReference Include="..\..\modules\Trader.Constants\Trader.Constants.csproj" />
-      <ProjectReference Include="..\..\modules\Trader.Extensions\Trader.Extensions.csproj" />
+      <ProjectReference Include="..\..\infrastructures\models\Trader.Constants\Trader.Constants.csproj" />
+      <ProjectReference Include="..\..\infrastructures\parts\Trader.Extensions\Trader.Extensions.csproj" />
+      <ProjectReference Include="..\..\infrastructures\services\Trader.Identity.Service\Trader.Identity.Service.csproj" />
+      <ProjectReference Include="..\..\storages\Trader.Storage.Account\Trader.Storage.Account.csproj" />
     </ItemGroup>
 
     <ItemGroup>

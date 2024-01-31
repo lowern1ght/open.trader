@@ -1,6 +1,6 @@
 using System.Text.Json;
-using Xunit.Abstractions;
 using Trader.Configuration.Models;
+using Xunit.Abstractions;
 
 namespace Trader.Generator;
 
