@@ -33,7 +33,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\..\infrastructures\libraries\OpenTrader.Asp.Extensions\OpenTrader.Asp.Extensions.csproj" />
       <ProjectReference Include="..\..\..\infrastructures\services\OpenTrader.Exchange.Service\OpenTrader.Exchange.Service.csproj" />
-      <ProjectReference Include="..\..\..\storages\Trader.Storage.Account\Trader.Storage.Account.csproj" />
+      <ProjectReference Include="..\..\..\storages\OpenTrader.Storage.Account\OpenTrader.Storage.Account.csproj" />
     </ItemGroup>
 
 </Project>

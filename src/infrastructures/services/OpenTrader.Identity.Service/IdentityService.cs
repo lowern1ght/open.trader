@@ -10,8 +10,8 @@ using OpenTrader.Identity.Service.Helpers;
 using OpenTrader.Identity.Service.Interfaces;
 using OpenTrader.Identity.Service.Models;
 using OpenTrader.Identity.Service.Models.Configuration;
-using Trader.Storage.Account;
-using Trader.Storage.Account.Models;
+using OpenTrader.Storage.Account;
+using OpenTrader.Storage.Account.Models;
 
 namespace OpenTrader.Identity.Service;
 

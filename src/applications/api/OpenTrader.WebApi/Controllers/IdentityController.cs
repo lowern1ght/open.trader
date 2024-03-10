@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Trader.Storage.Account.Models;
+using OpenTrader.Storage.Account.Models;
 using Microsoft.AspNetCore.Authorization;
 using OpenTrader.Identity.Service.Extensions;
 using OpenTrader.Identity.Service.Interfaces;

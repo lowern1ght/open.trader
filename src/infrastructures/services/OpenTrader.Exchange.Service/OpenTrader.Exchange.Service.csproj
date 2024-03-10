@@ -12,7 +12,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\models\OpenTrader.Constants\OpenTrader.Constants.csproj" />
-      <ProjectReference Include="..\..\..\storages\Trader.Storage.Account\Trader.Storage.Account.csproj" />
+      <ProjectReference Include="..\..\..\storages\OpenTrader.Storage.Account\OpenTrader.Storage.Account.csproj" />
       <ProjectReference Include="..\OpenTrader.Identity.Service\OpenTrader.Identity.Service.csproj" />
     </ItemGroup>
 

@@ -1,6 +1,6 @@
 ﻿using TextExtensions;
 
-namespace OpenTrader.Core.Extensions;
+namespace STBL.System.Extensions;
 
 public static class EnumExtensions
 {
@@ -29,7 +29,7 @@ public static class EnumExtensions
     /// </summary>
     /// <param name="enum"></param>
     /// <returns></returns>
-    public static string ToLowerCase(this Enum @enum)
+    public static string ToLower(this Enum @enum)
     {
         return @enum.ToString().ToLower();
     }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Trader.Storage.Account.Extensions;
+namespace OpenTrader.Storage.Account.Extensions;
 
 public static class ServiceCollectionExtensions
 {

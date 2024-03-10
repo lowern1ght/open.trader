@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Trader.Storage.Account.Models;
+using OpenTrader.Storage.Account.Models;
 
-namespace Trader.Storage.Account;
+namespace OpenTrader.Storage.Account;
 
 public sealed class IdentityTraderDbContext : IdentityDbContext<TraderUser>
 {

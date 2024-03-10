@@ -1,4 +1,4 @@
-using Trader.Storage.Account.Extensions;
+using OpenTrader.Storage.Account.Extensions;
 using OpenTrader.Exchange.Service.Dependency;
 using OpenTrader.Asp.Extensions.Configuration;
 using OpenTrader.Asp.Extensions.WebApplication;

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace Trader.Storage.Account.Models;
+namespace OpenTrader.Storage.Account.Models;
 
 public class TraderUser : IdentityUser
 {
