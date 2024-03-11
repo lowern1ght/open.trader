@@ -32,6 +32,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{28
 		deploy\services\identity-compose.yml = deploy\services\identity-compose.yml
 		deploy\services\s3-compose.yml = deploy\services\s3-compose.yml
 		deploy\services\network-compose.yml = deploy\services\network-compose.yml
+		deploy\services\services-compose.yml = deploy\services\services-compose.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "init-queries", "init-queries", "{72D22C0D-C37C-4AB1-94A8-3E2D07FAA76F}"

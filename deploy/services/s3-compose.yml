@@ -16,6 +16,8 @@ services:
       MINIO_ACCESS_KEY: 7wNyb4lMFhIJ1bv0c4ws
       MINIO_SECRET_KEY: zVYrAVtFW4Fhu8Kyu6u7Of4xEPc4nUFg8qJ6MpF1
     command: server --console-address ":10000" --address ":10001" /data
+    networks:
+      - open.trader-network
 
 volumes:
   minio_storage: { }

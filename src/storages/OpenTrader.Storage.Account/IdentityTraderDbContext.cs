@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using OpenTrader.Storage.Account.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace OpenTrader.Storage.Account;
 

@@ -1,0 +1,21 @@
+﻿version: '3.8'
+
+services:
+  web.api:
+    build:
+      context: .
+      dockerfile: ./src/applications/api/OpenTrader.WebApi/Dockerfile
+    ports:
+      - "5000:5000"
+      - "5001:5001"
+    restart: on-failure
+    networks:
+      - open.trader-network
+        
+  client-render:
+    build:
+      context: .
+      dockerfile: ../../src/applications/clients/client-render/Dockerfile
+    restart: on-failure
+    ports:
+      - "6000:6000"

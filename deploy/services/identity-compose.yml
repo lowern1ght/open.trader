@@ -2,7 +2,7 @@
 
 services:
   
-  trader.identity-db:
+  identity-db:
     image: postgres:15.5
     hostname: trader.identity-db
     restart: always
@@ -11,4 +11,6 @@ services:
     volumes:
       - ./init-queries/init-identity.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
-      - "8010:5432"
+      - "5010:5432"
+    networks:
+      - open.trader-network

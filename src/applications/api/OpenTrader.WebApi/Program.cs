@@ -4,8 +4,11 @@ using OpenTrader.Asp.Extensions.Configuration;
 using OpenTrader.Asp.Extensions.WebApplication;
 using OpenTrader.Constants.General;
 using OpenTrader.Identity.Service.Dependency;
+using OpenTrader.Logger.Dependency;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.AddOpenTraderLogger();
 
 builder.AddTraderSwagger();
 builder.Services.AddTraderCors();
