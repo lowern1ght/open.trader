@@ -2,6 +2,10 @@
 
 `Open source` crypto _bot_ on **micro-services** **architecture** application
 
+## Deploy
+
+> Read this documentation [build documentation](BUILD.md)
+
 ## UML Diagram
 
 > Example scheme of the infrastructure that will be used for the development of this application
@@ -19,6 +23,7 @@
 
 1. Single message broker for templates - The message broker forwards a small number of messages to the endpoints. 
 But the services themselves are already involved in complex template processing
+
 
 ### Git Decoration
 

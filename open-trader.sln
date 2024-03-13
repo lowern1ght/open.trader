@@ -7,6 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "repo", "repo", "{99A334F3-5
 		repo\open-trader.infrastructure.drawio = repo\open-trader.infrastructure.drawio
 		repo\open-trader.infrastructure.drawio.png = repo\open-trader.infrastructure.drawio.png
 		LICENSE = LICENSE
+		BUILD.md = BUILD.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{35D479A1-E7BC-4C66-B26C-A627063260DB}"
@@ -14,12 +15,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{C5838635-BACC-45A5-9F60-021F6D491F55}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{BD958C62-E499-4E1E-873E-F4320CF4AC73}"
-	ProjectSection(SolutionItems) = preProject
-		deploy\identity-compose.yml = deploy\identity-compose.yml
-		deploy\network-compose.yml = deploy\network-compose.yml
-		deploy\s3-compose.yml = deploy\s3-compose.yml
-		deploy\services-compose.yml = deploy\services-compose.yml
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "applications", "applications", "{21A12E61-75DE-4A63-9C64-5897375E919F}"
 EndProject
@@ -61,9 +56,28 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTrader.Storage.Preferen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTrader.Logger", "src\infrastructures\libraries\OpenTrader.Logger\OpenTrader.Logger.csproj", "{A000544B-1AF8-4583-B15F-0614B6751180}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "migrations", "migrations", "{3339CFA4-F9ED-4DEA-99A4-92580C5B3996}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "builds", "builds", "{2EA2B79A-7F89-4A33-910E-7E1420017D2E}"
 	ProjectSection(SolutionItems) = preProject
-		deploy\migrations\init-identity.sql = deploy\migrations\init-identity.sql
+		deploy\builds\identity = deploy\builds\identity
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "migrations", "migrations", "{3148F6E1-1200-4AA9-8A31-9560D7E27357}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\builds\migrations\init-identity.sql = deploy\builds\migrations\init-identity.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pods", "pods", "{BD71655F-5846-4D1F-80CA-8B8D13FF17F4}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\pods\identity.pod.yaml = deploy\pods\identity.pod.yaml
+		deploy\pods\web-api.pod.yaml = deploy\pods\web-api.pod.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "compose", "compose", "{D13E4BEF-A932-41E1-A563-F68B4A3041AF}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\compose\identity-compose.yml = deploy\compose\identity-compose.yml
+		deploy\compose\network-compose.yml = deploy\compose\network-compose.yml
+		deploy\compose\s3-compose.yml = deploy\compose\s3-compose.yml
+		deploy\compose\services-compose.yml = deploy\compose\services-compose.yml
 	EndProjectSection
 EndProject
 Global
@@ -90,7 +104,10 @@ Global
 		{F12A0A1D-19CB-486C-9ECD-D181C6CC1EB7} = {331EC2C4-45BA-4F0A-8552-F6042F64A78E}
 		{FD150A8D-3405-4E01-B709-9A907D6C82CB} = {71723F05-D07D-4CCF-8C9A-169F9B9FAF19}
 		{A000544B-1AF8-4583-B15F-0614B6751180} = {331EC2C4-45BA-4F0A-8552-F6042F64A78E}
-		{3339CFA4-F9ED-4DEA-99A4-92580C5B3996} = {BD958C62-E499-4E1E-873E-F4320CF4AC73}
+		{2EA2B79A-7F89-4A33-910E-7E1420017D2E} = {BD958C62-E499-4E1E-873E-F4320CF4AC73}
+		{3148F6E1-1200-4AA9-8A31-9560D7E27357} = {2EA2B79A-7F89-4A33-910E-7E1420017D2E}
+		{BD71655F-5846-4D1F-80CA-8B8D13FF17F4} = {BD958C62-E499-4E1E-873E-F4320CF4AC73}
+		{D13E4BEF-A932-41E1-A563-F68B4A3041AF} = {BD958C62-E499-4E1E-873E-F4320CF4AC73}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{9D117F18-513D-40F3-868F-A4E30A4F1442}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

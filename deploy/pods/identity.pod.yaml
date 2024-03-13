@@ -1,0 +1,13 @@
+﻿apiVersion: v1
+kind: Pod
+metadata:
+  name: identity-db
+  labels:
+    app: identity-db
+spec:
+  containers:
+    - name: identity-db
+      image: opentrader/identity-db
+      imagePullPolicy: IfNotPresent
+  restartPolicy: Always
+  hostname: opentrader.identity.db
