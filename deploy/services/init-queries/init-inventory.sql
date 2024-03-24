@@ -1,1 +1,0 @@
-create user inventory_manager with superuser password 'tfjrD8yFxaoUNLtBCIye';

@@ -11,8 +11,8 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
 using OpenTrader.Identity.Service.Extensions;
 using OpenTrader.Identity.Service.Interfaces;
-using Trader.Storage.Account;
-using Trader.Storage.Account.Models;
+using OpenTrader.Storage.Account;
+using OpenTrader.Storage.Account.Models;
 using SameSiteMode = Microsoft.AspNetCore.Http.SameSiteMode;
 
 namespace OpenTrader.Identity.Service.Dependency;
@@ -85,8 +85,8 @@ public static class ApplicationExtensions
                 {
                     var authorization = context.Request.Headers[HeaderNames.Authorization];
                     
-                    if (!string.IsNullOrEmpty(authorization) && authorization.ToString().StartsWith($"{JwtBearerDefaults.AuthenticationScheme} "))
-                        return JwtBearerDefaults.AuthenticationScheme;
+                    /*if (!string.IsNullOrEmpty(authorization) && authorization.ToString().StartsWith($"{JwtBearerDefaults.AuthenticationScheme} "))
+                        return JwtBearerDefaults.AuthenticationScheme;*/
 
                     // otherwise always check for cookie auth
                     return CookieAuthenticationDefaults.AuthenticationScheme;

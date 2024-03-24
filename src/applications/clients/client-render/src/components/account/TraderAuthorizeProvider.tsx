@@ -1,5 +1,5 @@
 import {JSX, useEffect, useState} from "react";
-import {IdentityHelper} from "../../clients/webApiClients.ts";
+import {IdentityClient} from "../../clients/identity.client.ts";
 
 export interface ITraderAuthorizeProvider {
     children: JSX.Element | JSX.Element[],
@@ -13,11 +13,10 @@ export const TraderAuthorizeProvider = ({ children, loadingPage, loginPage } : I
 
     useEffect(() => {
         setTimeout(() => {
-            IdentityHelper.isAuthorize()
-                .then(result => !result
-                    ? setNeedLogin(true)
-                    : setLogin(true))
-                .catch(() => setNeedLogin(true))
+            IdentityClient.UserInfoAsync()
+                .then(_ => setLogin(true))
+            
+            setNeedLogin(true)
         }, 2000)
     }, []);
 

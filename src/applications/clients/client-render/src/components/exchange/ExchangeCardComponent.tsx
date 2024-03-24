@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import styles from "./styles/ExchangeCard.module.css"
 import {RouteViews} from "../../modules/RouteConfig.tsx";
 import {Avatar, Card, Result, Spin, Typography} from "antd";
-import {useExchangeImage} from "../../clients/webApiClients.ts";
+import {useExchangeImage} from "../../hooks/webApiClients.ts";
 import {IssuesCloseOutlined, LockOutlined} from "@ant-design/icons";
 import {ExchangeModel} from "../../clients/models/ExchangeModels.ts";
 

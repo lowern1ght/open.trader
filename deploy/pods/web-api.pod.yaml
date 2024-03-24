@@ -1,0 +1,13 @@
+﻿apiVersion: v1
+kind: Pod
+metadata:
+  name: web-api
+  labels:
+    app: web-api
+spec:
+  containers:
+    - name: web-api
+      image: opentrader/web-api:latest
+      imagePullPolicy: IfNotPresent
+  restartPolicy: OnFailure
+  

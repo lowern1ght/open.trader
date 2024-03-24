@@ -1,16 +1,20 @@
-using Trader.Storage.Account.Extensions;
+using OpenTrader.Storage.Account.Extensions;
 using OpenTrader.Exchange.Service.Dependency;
 using OpenTrader.Asp.Extensions.Configuration;
 using OpenTrader.Asp.Extensions.WebApplication;
 using OpenTrader.Constants.General;
 using OpenTrader.Identity.Service.Dependency;
+using OpenTrader.Logger.Dependency;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.AddOpenTraderLogger();
 
 builder.AddTraderSwagger();
 builder.Services.AddTraderCors();
 builder.Services.AddTraderRouting();
 builder.Services.AddTraderAntiforgery();
+builder.Services.AddForwarderHeaders();
 
 #region DbContexts
 
@@ -20,6 +24,8 @@ builder.Services.AddIdentityTraderDbContext(builder.Configuration);
 
 builder.AddS3Settings();
 builder.AddTraderIdentity();
+
+//Todo: fix auth cookie, dont change cookie or dont auth successes 
 
 #region Services
 
@@ -37,11 +43,10 @@ if (application.Environment.IsDevelopment())
 }
 else
 {
-    application.UseHttpsRedirection();
     application.UseHsts();
 }
 
-application.UseTraderDefault();
+application.UseForwardedHeaders();
 
 application.UseRouting();
 

@@ -1,9 +1,9 @@
 import {JSX} from "react";
 import parse from "html-react-parser";
-import {webApiProxy} from "./webApiClients.ts";
+import {webApiProxy} from "../hooks/webApiClients.ts";
 import axios, {AxiosRequestConfig, AxiosResponse} from "axios";
 
-export let axiosConfig : AxiosRequestConfig = { }
+export let axiosConfig : AxiosRequestConfig = {}
 
 export type RestMethod = 'GET' | 'POST' | 'DELETE' | 'PUT'
 

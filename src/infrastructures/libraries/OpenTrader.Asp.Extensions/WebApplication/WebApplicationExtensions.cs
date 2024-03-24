@@ -82,11 +82,8 @@ public static class WebApplicationBuilderExtensions
     /// <returns></returns>
     public static WebApplicationBuilder AddTraderSwagger(this WebApplicationBuilder builder)
     {
-        if (builder.Environment.IsDevelopment())
-        {
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
-        }
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen();
 
         return builder;
     }
@@ -98,26 +95,8 @@ public static class WebApplicationBuilderExtensions
     /// <returns></returns>
     public static Microsoft.AspNetCore.Builder.WebApplication UseTraderSwagger(this Microsoft.AspNetCore.Builder.WebApplication application)
     {
-        if (application.Environment.IsDevelopment())
-        {
-            application.UseSwagger();
-            application.UseSwaggerUI();
-        }
-
-        return application;
-    }
-
-    /// <summary>
-    ///     Use required services to all Trader.Applications
-    /// </summary>
-    /// <param name="application"></param>
-    /// <returns></returns>
-    public static Microsoft.AspNetCore.Builder.WebApplication UseTraderDefault(this Microsoft.AspNetCore.Builder.WebApplication application)
-    {
-        application.UseForwardedHeaders(new ForwardedHeadersOptions
-        {
-            ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-        });
+        application.UseSwagger();
+        application.UseSwaggerUI();
 
         return application;
     }
@@ -162,6 +141,20 @@ public static class WebApplicationBuilderExtensions
         });
 
         return builder;
+    }
+
+    #endregion
+
+    #region Headers
+
+    public static IServiceCollection AddForwarderHeaders(this IServiceCollection serviceCollection)
+    {
+        serviceCollection.Configure<ForwardedHeadersOptions>(options =>
+        {
+            options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+        });
+
+        return serviceCollection;
     }
 
     #endregion

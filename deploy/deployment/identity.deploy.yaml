@@ -1,0 +1,29 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: identity.db
+  labels:
+    app: identity.db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: identity.db
+  template:
+    metadata:
+      name: identity.db
+      labels:
+        app: identity.db
+    spec:
+      containers:
+        - name: identity.db
+          image: opentrader/identity-db
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_USER
+              value: postgres
+            - name: POSTGRES_PASSWORD
+              value: Vf1P3ZcHqehAYExECDCfn3kU49HVxT
+      restartPolicy: Always

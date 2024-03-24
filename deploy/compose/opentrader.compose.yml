@@ -1,0 +1,88 @@
+version: '3.8'
+
+name: opentrader-develop
+
+services:
+  
+  identity-db:
+    image: postgres:15.5
+    hostname: identity-db
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: RwPap27k5VnZTqVt
+    volumes:
+      - ../builds/migrations/init-identity.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5010:5432"
+    networks:
+      - open.trader-network
+      
+  web.api:
+    build:
+      context: .
+      dockerfile: ../../src/applications/api/OpenTrader.WebApi/Dockerfile
+    depends_on: 
+      - identity-db
+      - s3.minio
+    ports:
+      - "5000:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Release
+      - ASPNETCORE_URLS=http://+:80
+    restart: on-failure
+    hostname: web-api
+    networks:
+      - open.trader-network
+
+  proxy:
+    image: nginx:latest
+    hostname: proxy-nginx
+    depends_on: 
+      - web.api
+    ports:
+      - "2000:443"
+    volumes:
+      - ../security/:/etc/nginx/
+      - ../configs/nginx.conf:/etc/nginx/nginx.conf
+      - ../resources/icons/icon.ico:/var/www/media/images/favicon.ico
+    networks:
+      - open.trader-network
+  
+  #  client-render:
+#    build:
+#      context: .
+#      dockerfile: ../../src/applications/clients/client-render/Dockerfile
+#    restart: on-failure
+#    hostname: client-render
+#    depends_on:
+#      - web.api
+#    ports:
+#      - "6000:6000"
+#    networks:
+#      - open.trader-network
+  
+  s3.minio:
+    image: minio/minio
+    
+    hostname: s3-minio
+    restart: always
+    ports:
+      - "10000:10000"
+      - "10001:10001"
+    volumes:
+      - minio_storage:/data
+    environment:
+      MINIO_ROOT_USER: admin
+      MINIO_ROOT_PASSWORD: LgN0mn77lPdkfOCEaSO9
+      MINIO_ACCESS_KEY: 7wNyb4lMFhIJ1bv0c4ws
+      MINIO_SECRET_KEY: zVYrAVtFW4Fhu8Kyu6u7Of4xEPc4nUFg8qJ6MpF1
+    command: server --console-address ":10000" --address ":10001" /data
+    networks:
+      - open.trader-network
+
+networks:
+  open.trader-network:
+    driver: bridge
+    
+volumes:
+  minio_storage: { }

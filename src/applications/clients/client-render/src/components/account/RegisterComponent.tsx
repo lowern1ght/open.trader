@@ -1,36 +1,25 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Link, Navigate} from "react-router-dom";
 import accountStyles from "./styles/Account.module.css"
 import {RouteViews} from "../../modules/RouteConfig.tsx";
 import {IRegisterModel} from "../../models/Identity.ts";
-import {WebApiClients} from "../../clients/webApiClients.ts";
-import {Button, Card, Divider, Form, Input, notification, Spin, Typography} from "antd";
+import {Button, Card, Divider, Form, Input, Spin, Typography} from "antd";
 import {IAccountComponent} from "../../interfaces/IAccountComponent.tsx";
 import {LockOutlined, MailOutlined, UserOutlined} from "@ant-design/icons";
+import {IdentityClient} from "../../clients/identity.client.ts";
 
 export const RegisterComponent = () : IAccountComponent => {
     const [loading, setLoading] = useState(false)
-    const [api, _] = notification.useNotification()
     const [isRegistered, setRegister] = useState(false)
-
-    const errorAlert = (title: string, message: string) : void => {
-        api['error']({
-            type: 'error',
-            message: title,
-            description: message,
-            icon: true
-        })
-    }
 
     const onFinish = async (model: IRegisterModel) => {
         setLoading(true)
 
-        let response = await WebApiClients.register(model);
-
-        if (response.status == 200)
-            setRegister(true)
-
-        errorAlert('Register error', response.data)
+        useEffect(() => {
+            IdentityClient.RegisterAsync(model)
+                .then(_ => setRegister(true))
+        }, []);
+        
         setLoading(false)
     }
 

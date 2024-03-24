@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Trader.Storage.Account.Models;
+using OpenTrader.Storage.Account.Models;
 
 namespace OpenTrader.Identity.Service.Extensions;
 

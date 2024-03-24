@@ -1,28 +1,31 @@
-﻿FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
+﻿FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+USER $APP_UID
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+EXPOSE 5000
+EXPOSE 5001
+
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["src/applications/api/Trader.WebApi/Trader.WebApi.csproj", "src/applications/api/Trader.WebApi/"]
-COPY ["src/modules/extensions/Trader.Extensions.Logging/Trader.Extensions.Logging.csproj", "src/modules/extensions/Trader.Extensions.Logging/"]
-COPY ["src/modules/extensions/Trader.Extensions.Identity/Trader.Extensions.Identity.csproj", "src/modules/extensions/Trader.Extensions.Identity/"]
-COPY ["src/modules/Trader.Constants/Trader.Constants.csproj", "src/modules/Trader.Constants/"]
-COPY ["src/modules/extensions/Trader.Extensions/Trader.Extensions.csproj", "src/modules/extensions/Trader.Extensions/"]
-COPY ["src/modules/Trader.Models/Trader.Models.csproj", "src/modules/Trader.Models/"]
-COPY ["src/storages/Trader.Storage.Account/Trader.Storage.Account.csproj", "src/storages/Trader.Storage.Account/"]
-RUN dotnet restore "src/applications/api/Trader.WebApi/Trader.WebApi.csproj"
+COPY ["src/applications/api/OpenTrader.WebApi/OpenTrader.WebApi.csproj", "src/applications/api/OpenTrader.WebApi/"]
+COPY ["src/infrastructures/libraries/OpenTrader.Asp.Extensions/OpenTrader.Asp.Extensions.csproj", "src/infrastructures/libraries/OpenTrader.Asp.Extensions/"]
+COPY ["src/infrastructures/models/OpenTrader.Constants/OpenTrader.Constants.csproj", "src/infrastructures/models/OpenTrader.Constants/"]
+COPY ["src/infrastructures/services/OpenTrader.Exchange.Service/OpenTrader.Exchange.Service.csproj", "src/infrastructures/services/OpenTrader.Exchange.Service/"]
+COPY ["src/storages/OpenTrader.Storage.Account/OpenTrader.Storage.Account.csproj", "src/storages/OpenTrader.Storage.Account/"]
+COPY ["src/infrastructures/services/OpenTrader.Identity.Service/OpenTrader.Identity.Service.csproj", "src/infrastructures/services/OpenTrader.Identity.Service/"]
+COPY ["src/infrastructures/libraries/OpenTrader.Logger/OpenTrader.Logger.csproj", "src/infrastructures/libraries/OpenTrader.Logger/"]
+RUN dotnet restore "src/applications/api/OpenTrader.WebApi/OpenTrader.WebApi.csproj"
 COPY . .
-WORKDIR "/src/src/applications/api/Trader.WebApi"
-RUN dotnet build "Trader.WebApi.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/src/applications/api/OpenTrader.WebApi"
+RUN dotnet build "OpenTrader.WebApi.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet dev-certs https --trust
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "Trader.WebApi.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "OpenTrader.WebApi.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Trader.WebApi.dll"]
+ENTRYPOINT ["dotnet", "OpenTrader.WebApi.dll"]

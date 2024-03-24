@@ -6,6 +6,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "repo", "repo", "{99A334F3-5
 		README.md = README.md
 		repo\open-trader.infrastructure.drawio = repo\open-trader.infrastructure.drawio
 		repo\open-trader.infrastructure.drawio.png = repo\open-trader.infrastructure.drawio.png
+		LICENSE = LICENSE
+		BUILD.md = BUILD.md
+		repo\logo\icon.svg = repo\logo\icon.svg
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{35D479A1-E7BC-4C66-B26C-A627063260DB}"
@@ -24,30 +27,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{BB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTrader.WebApi", "src\applications\api\OpenTrader.WebApi\OpenTrader.WebApi.csproj", "{9D117F18-513D-40F3-868F-A4E30A4F1442}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trader.Storage.Account", "src\storages\Trader.Storage.Account\Trader.Storage.Account.csproj", "{E26CDF5C-5993-4A61-AAD4-97E519BB527F}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{281D6A9E-D9D7-4955-BF4D-4DF32F2C6DBC}"
-	ProjectSection(SolutionItems) = preProject
-		deploy\services\reverse-proxy-compose.yml = deploy\services\reverse-proxy-compose.yml
-		deploy\services\identity-compose.yml = deploy\services\identity-compose.yml
-		deploy\services\inventory-compose.yml = deploy\services\inventory-compose.yml
-		deploy\services\s3-compose.yml = deploy\services\s3-compose.yml
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "init-queries", "init-queries", "{72D22C0D-C37C-4AB1-94A8-3E2D07FAA76F}"
-	ProjectSection(SolutionItems) = preProject
-		deploy\services\init-queries\init-identity.sql = deploy\services\init-queries\init-identity.sql
-		deploy\services\init-queries\init-inventory.sql = deploy\services\init-queries\init-inventory.sql
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "security", "security", "{3F45B138-2A70-45F0-90B0-69C68B08E7F2}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "configurations", "configurations", "{1BFF04AD-3969-4F65-85E5-A045F8899325}"
-	ProjectSection(SolutionItems) = preProject
-		deploy\services\configurations\nginx.conf = deploy\services\configurations\nginx.conf
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trader.Futures", "src\applications\services\Trader.Futures\Trader.Futures.csproj", "{A2A34FFC-9524-4D55-BEF6-6BF41CEBDA8E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTrader.Storage.Account", "src\storages\OpenTrader.Storage.Account\OpenTrader.Storage.Account.csproj", "{E26CDF5C-5993-4A61-AAD4-97E519BB527F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infrastructures", "infrastructures", "{7F360F0C-9368-4361-8645-93C247003702}"
 EndProject
@@ -71,7 +51,68 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libraries", "libraries", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTrader.Asp.Extensions", "src\infrastructures\libraries\OpenTrader.Asp.Extensions\OpenTrader.Asp.Extensions.csproj", "{978A090C-447E-42BE-BE8C-18E3B297CEC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTrader.Core.Extensions", "src\infrastructures\libraries\OpenTrader.Core.Extensions\OpenTrader.Core.Extensions.csproj", "{F12A0A1D-19CB-486C-9ECD-D181C6CC1EB7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STBL.System.Extensions", "src\infrastructures\libraries\STBL.System.Extensions\STBL.System.Extensions.csproj", "{F12A0A1D-19CB-486C-9ECD-D181C6CC1EB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTrader.Storage.Preferences", "src\storages\OpenTrader.Storage.Preferences\OpenTrader.Storage.Preferences.csproj", "{FD150A8D-3405-4E01-B709-9A907D6C82CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTrader.Logger", "src\infrastructures\libraries\OpenTrader.Logger\OpenTrader.Logger.csproj", "{A000544B-1AF8-4583-B15F-0614B6751180}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "builds", "builds", "{2EA2B79A-7F89-4A33-910E-7E1420017D2E}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\builds\identity = deploy\builds\identity
+		deploy\builds\s3.minio = deploy\builds\s3.minio
+		deploy\builds\mq.rabbit = deploy\builds\mq.rabbit
+		deploy\builds\certbot = deploy\builds\certbot
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "migrations", "migrations", "{3148F6E1-1200-4AA9-8A31-9560D7E27357}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\builds\migrations\init-identity.sql = deploy\builds\migrations\init-identity.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pods", "pods", "{BD71655F-5846-4D1F-80CA-8B8D13FF17F4}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\pods\identity.pod.yaml = deploy\pods\identity.pod.yaml
+		deploy\pods\web-api.pod.yaml = deploy\pods\web-api.pod.yaml
+		deploy\pods\minio.s3.pod.yaml = deploy\pods\minio.s3.pod.yaml
+		deploy\pods\mq.rabbit.pod.yaml = deploy\pods\mq.rabbit.pod.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "compose", "compose", "{D13E4BEF-A932-41E1-A563-F68B4A3041AF}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\compose\opentrader.compose.yml = deploy\compose\opentrader.compose.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deployment", "deployment", "{E94D0D7F-26A8-4AF5-849C-260CF345A051}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\deployment\identity.deploy.yaml = deploy\deployment\identity.deploy.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "configs", "configs", "{B8F3D1C1-DCF6-4C1C-ABAC-3BFA9CE50B01}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\configs\nginx.conf = deploy\configs\nginx.conf
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "security", "security", "{B76DB0C4-3A15-4932-A6DC-BBA300C2DDC7}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\security\cert.key = deploy\security\cert.key
+		deploy\security\cert.pem = deploy\security\cert.pem
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "icons", "icons", "{180A22C3-2007-4878-A809-15271D9572BB}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\resources\icons\icon.ico = deploy\resources\icons\icon.ico
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "variables", "variables", "{3165420A-DC69-442F-B850-337AB1A5123A}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\variables\.env = deploy\variables\.env
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{AA1064EC-023D-4244-A164-A80105926E4C}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\builds\scripts\generate-ssl.sh = deploy\builds\scripts\generate-ssl.sh
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,11 +126,6 @@ Global
 		{BB8504F7-AA43-43B0-AA8D-C28F43C62325} = {21A12E61-75DE-4A63-9C64-5897375E919F}
 		{9D117F18-513D-40F3-868F-A4E30A4F1442} = {CBA2BC84-73C7-426C-8B9D-D443E0BA73AF}
 		{E26CDF5C-5993-4A61-AAD4-97E519BB527F} = {71723F05-D07D-4CCF-8C9A-169F9B9FAF19}
-		{281D6A9E-D9D7-4955-BF4D-4DF32F2C6DBC} = {BD958C62-E499-4E1E-873E-F4320CF4AC73}
-		{72D22C0D-C37C-4AB1-94A8-3E2D07FAA76F} = {281D6A9E-D9D7-4955-BF4D-4DF32F2C6DBC}
-		{3F45B138-2A70-45F0-90B0-69C68B08E7F2} = {281D6A9E-D9D7-4955-BF4D-4DF32F2C6DBC}
-		{1BFF04AD-3969-4F65-85E5-A045F8899325} = {281D6A9E-D9D7-4955-BF4D-4DF32F2C6DBC}
-		{A2A34FFC-9524-4D55-BEF6-6BF41CEBDA8E} = {BB8504F7-AA43-43B0-AA8D-C28F43C62325}
 		{7F360F0C-9368-4361-8645-93C247003702} = {35D479A1-E7BC-4C66-B26C-A627063260DB}
 		{25D3E521-3C87-4203-B3B2-C43BA246F22F} = {BD958C62-E499-4E1E-873E-F4320CF4AC73}
 		{AD680F60-6D1A-40B0-B333-0161462D03BA} = {7F360F0C-9368-4361-8645-93C247003702}
@@ -100,6 +136,18 @@ Global
 		{331EC2C4-45BA-4F0A-8552-F6042F64A78E} = {7F360F0C-9368-4361-8645-93C247003702}
 		{978A090C-447E-42BE-BE8C-18E3B297CEC8} = {331EC2C4-45BA-4F0A-8552-F6042F64A78E}
 		{F12A0A1D-19CB-486C-9ECD-D181C6CC1EB7} = {331EC2C4-45BA-4F0A-8552-F6042F64A78E}
+		{FD150A8D-3405-4E01-B709-9A907D6C82CB} = {71723F05-D07D-4CCF-8C9A-169F9B9FAF19}
+		{A000544B-1AF8-4583-B15F-0614B6751180} = {331EC2C4-45BA-4F0A-8552-F6042F64A78E}
+		{2EA2B79A-7F89-4A33-910E-7E1420017D2E} = {BD958C62-E499-4E1E-873E-F4320CF4AC73}
+		{3148F6E1-1200-4AA9-8A31-9560D7E27357} = {2EA2B79A-7F89-4A33-910E-7E1420017D2E}
+		{BD71655F-5846-4D1F-80CA-8B8D13FF17F4} = {BD958C62-E499-4E1E-873E-F4320CF4AC73}
+		{D13E4BEF-A932-41E1-A563-F68B4A3041AF} = {BD958C62-E499-4E1E-873E-F4320CF4AC73}
+		{E94D0D7F-26A8-4AF5-849C-260CF345A051} = {BD958C62-E499-4E1E-873E-F4320CF4AC73}
+		{B8F3D1C1-DCF6-4C1C-ABAC-3BFA9CE50B01} = {BD958C62-E499-4E1E-873E-F4320CF4AC73}
+		{B76DB0C4-3A15-4932-A6DC-BBA300C2DDC7} = {BD958C62-E499-4E1E-873E-F4320CF4AC73}
+		{180A22C3-2007-4878-A809-15271D9572BB} = {25D3E521-3C87-4203-B3B2-C43BA246F22F}
+		{3165420A-DC69-442F-B850-337AB1A5123A} = {BD958C62-E499-4E1E-873E-F4320CF4AC73}
+		{AA1064EC-023D-4244-A164-A80105926E4C} = {2EA2B79A-7F89-4A33-910E-7E1420017D2E}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{9D117F18-513D-40F3-868F-A4E30A4F1442}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -110,10 +158,6 @@ Global
 		{E26CDF5C-5993-4A61-AAD4-97E519BB527F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E26CDF5C-5993-4A61-AAD4-97E519BB527F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E26CDF5C-5993-4A61-AAD4-97E519BB527F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A2A34FFC-9524-4D55-BEF6-6BF41CEBDA8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A2A34FFC-9524-4D55-BEF6-6BF41CEBDA8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A2A34FFC-9524-4D55-BEF6-6BF41CEBDA8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A2A34FFC-9524-4D55-BEF6-6BF41CEBDA8E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{41B08DE8-AEC5-4DDC-8083-B694FAFAE51D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{41B08DE8-AEC5-4DDC-8083-B694FAFAE51D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41B08DE8-AEC5-4DDC-8083-B694FAFAE51D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -134,5 +178,13 @@ Global
 		{F12A0A1D-19CB-486C-9ECD-D181C6CC1EB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F12A0A1D-19CB-486C-9ECD-D181C6CC1EB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F12A0A1D-19CB-486C-9ECD-D181C6CC1EB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD150A8D-3405-4E01-B709-9A907D6C82CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD150A8D-3405-4E01-B709-9A907D6C82CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD150A8D-3405-4E01-B709-9A907D6C82CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD150A8D-3405-4E01-B709-9A907D6C82CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A000544B-1AF8-4583-B15F-0614B6751180}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A000544B-1AF8-4583-B15F-0614B6751180}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A000544B-1AF8-4583-B15F-0614B6751180}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A000544B-1AF8-4583-B15F-0614B6751180}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

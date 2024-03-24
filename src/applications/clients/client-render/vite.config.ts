@@ -1,10 +1,11 @@
 import react from '@vitejs/plugin-react-swc'
+import mkcert from 'vite-plugin-mkcert'
 import {defineConfig, loadEnv, ProxyOptions} from 'vite'
 
 const defaultProxy = {
   "/web-api": {
     changeOrigin: true,
-    target: `http://localhost:8001`,
+    target: `http://localhost:5000`,
     rewrite: (path) => path.replace(/^\/web-api/, ''),
   }
 }
@@ -17,7 +18,7 @@ interface ITraderClientConfig {
 export default ({ mode }) => {
 
   const defaultConfig : ITraderClientConfig = {
-    port: 12000,
+    port: 3000,
     proxy: defaultProxy
   }
 
