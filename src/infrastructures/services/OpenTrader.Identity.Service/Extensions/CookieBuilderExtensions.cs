@@ -15,9 +15,9 @@ public static class CookieBuilderExtensions
     public static void IdentityCookie(this CookieBuilder builder)
     {
         builder.HttpOnly = true;
-        builder.SameSite = SameSiteMode.None;
-        builder.SecurePolicy = CookieSecurePolicy.SameAsRequest;
         builder.Name = Cookie.Identity;
+        builder.SameSite = SameSiteMode.Strict;
+        builder.SecurePolicy = CookieSecurePolicy.Always;
     }
     
     #endregion
