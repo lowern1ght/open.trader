@@ -1,4 +1,4 @@
-![image](./repo/resources/repo_preview.png)
+![repo_preview](repo/resources/repo_preview.png)
 
 ---
 

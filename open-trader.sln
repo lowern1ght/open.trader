@@ -114,7 +114,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{AA10
 		deploy\builds\scripts\generate-ssl.sh = deploy\builds\scripts\generate-ssl.sh
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "resources", "resources", "{3608E16E-6589-49D4-8E27-5D980632390F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "resources", "resources", "{4354278A-9834-4154-A0BC-D0E238A11A72}"
 	ProjectSection(SolutionItems) = preProject
 		repo\resources\repo_preview.png = repo\resources\repo_preview.png
 	EndProjectSection
@@ -153,7 +153,7 @@ Global
 		{180A22C3-2007-4878-A809-15271D9572BB} = {25D3E521-3C87-4203-B3B2-C43BA246F22F}
 		{3165420A-DC69-442F-B850-337AB1A5123A} = {BD958C62-E499-4E1E-873E-F4320CF4AC73}
 		{AA1064EC-023D-4244-A164-A80105926E4C} = {2EA2B79A-7F89-4A33-910E-7E1420017D2E}
-		{3608E16E-6589-49D4-8E27-5D980632390F} = {99A334F3-5294-418C-984E-98296821DF81}
+		{4354278A-9834-4154-A0BC-D0E238A11A72} = {99A334F3-5294-418C-984E-98296821DF81}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{9D117F18-513D-40F3-868F-A4E30A4F1442}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
