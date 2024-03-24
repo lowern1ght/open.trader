@@ -1,4 +1,8 @@
-# Open-Trader
+![repo_preview](repo/resources/repo_preview.png)
+
+---
+
+# OpenTrader `Platform`
 
 `Open source` crypto _bot_ on **micro-services** **architecture** application
 
