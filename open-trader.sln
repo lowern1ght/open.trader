@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "repo", "repo", "{99A334F3-5
 		LICENSE = LICENSE
 		BUILD.md = BUILD.md
 		repo\logo\icon.svg = repo\logo\icon.svg
+		FUNDING.yml = FUNDING.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{35D479A1-E7BC-4C66-B26C-A627063260DB}"
