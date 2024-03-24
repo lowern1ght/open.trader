@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
 using OpenTrader.Identity.Service.Extensions;
+using OpenTrader.Identity.Service.Helpers;
 using OpenTrader.Identity.Service.Interfaces;
 using OpenTrader.Storage.Account;
 using OpenTrader.Storage.Account.Models;
@@ -41,9 +43,11 @@ public static class ApplicationExtensions
         {
             // This lambda determines whether user consent for non-essential cookies is needed for a given request. 
             options.CheckConsentNeeded = _ => true;
-            options.MinimumSameSitePolicy = SameSiteMode.None;
+            options.HttpOnly = HttpOnlyPolicy.Always;
+            options.Secure = CookieSecurePolicy.Always;
+            options.MinimumSameSitePolicy = SameSiteMode.Strict;
         });
-        
+
         collection.AddAuthentication(options =>
             {
                 options.DefaultScheme = Constants.General.Identity.Scheme.TraderIdentity;
@@ -60,14 +64,13 @@ public static class ApplicationExtensions
 
                 options.LoginPath = Constants.General.Identity.Path.LoginUrl;
                 options.LogoutPath = Constants.General.Identity.Path.LogoutUrl;
-
+                
                 options.Events.OnRedirectToLogin = context =>
                 {
                     context.Response.StatusCode = StatusCodes.Status401Unauthorized;
                     return Task.CompletedTask;
                 };
-            })
-            .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
+            }).AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
             {
                 options.SaveToken = true;
                 options.RequireHttpsMetadata = false;
@@ -85,13 +88,16 @@ public static class ApplicationExtensions
                 {
                     var authorization = context.Request.Headers[HeaderNames.Authorization];
                     
-                    /*if (!string.IsNullOrEmpty(authorization) && authorization.ToString().StartsWith($"{JwtBearerDefaults.AuthenticationScheme} "))
-                        return JwtBearerDefaults.AuthenticationScheme;*/
-
-                    // otherwise always check for cookie auth
-                    return CookieAuthenticationDefaults.AuthenticationScheme;
+                    return SchemeSelect.IsJwtAuthorization(authorization.ToString()) 
+                        ? JwtBearerDefaults.AuthenticationScheme 
+                        : CookieAuthenticationDefaults.AuthenticationScheme;
                 };
             });
+
+        collection.ConfigureApplicationCookie(options =>
+        {
+            options.Cookie.IdentityCookie();
+        });
     }
 
     /// <summary>
@@ -104,7 +110,7 @@ public static class ApplicationExtensions
         {
             options.InvokeHandlersAfterFailure = false;
             
-            options.DefaultPolicy = new AuthorizationPolicyBuilder(CookieAuthenticationDefaults.AuthenticationScheme, JwtBearerDefaults.AuthenticationScheme)
+            options.DefaultPolicy = new AuthorizationPolicyBuilder(CookieAuthenticationDefaults.AuthenticationScheme)
                 .RequireAuthenticatedUser()
                 .RequireAssertion(context => context.User.Identity is { IsAuthenticated: true })
                 .Build();

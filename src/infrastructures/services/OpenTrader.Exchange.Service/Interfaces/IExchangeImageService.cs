@@ -1,6 +1,8 @@
-﻿namespace OpenTrader.Exchange.Service.Interfaces;
+﻿using OpenTrader.Exchange.Service.Models;
+
+namespace OpenTrader.Exchange.Service.Interfaces;
 
 public interface IExchangeImageService
 {
-    Task DownloadImageByName(string fileName, CancellationToken token);
+    Task<ImageResult> DownloadImageByName(string fileName, CancellationToken token);
 }

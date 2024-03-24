@@ -1,4 +1,5 @@
-﻿using OpenTrader.Constants.General;
+﻿using System.Reflection;
+using OpenTrader.Constants.General;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Builder;
@@ -82,8 +83,17 @@ public static class WebApplicationBuilderExtensions
     /// <returns></returns>
     public static WebApplicationBuilder AddTraderSwagger(this WebApplicationBuilder builder)
     {
+        if (!bool.Parse(builder.Configuration[Constants.General.Configuration.SwaggerEnable] ?? "false"))
+            return builder;
+        
         builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
+        builder.Services.AddSwaggerGen(options =>
+        {
+            var filePath = Path.Combine(AppContext.BaseDirectory,
+                $"{Assembly.GetEntryAssembly()?.GetName().Name}.xml");
+            
+            options.IncludeXmlComments(filePath);
+        });
 
         return builder;
     }
@@ -95,6 +105,9 @@ public static class WebApplicationBuilderExtensions
     /// <returns></returns>
     public static Microsoft.AspNetCore.Builder.WebApplication UseTraderSwagger(this Microsoft.AspNetCore.Builder.WebApplication application)
     {
+        if (!bool.Parse(application.Configuration[Constants.General.Configuration.SwaggerEnable] ?? "false"))
+            return application;
+        
         application.UseSwagger();
         application.UseSwaggerUI();
 
