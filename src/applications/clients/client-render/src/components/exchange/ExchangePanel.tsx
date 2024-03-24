@@ -1,5 +1,4 @@
 import {CSSProperties, useEffect, useState} from "react";
-import {IUserInfo} from "../../models/Identity.ts";
 import {TraderAuthorizeProvider} from "../account/TraderAuthorizeProvider.tsx";
 import {LoginPage} from "../../pages/LoginPage.tsx";
 import {LoadingPage} from "../../pages/LoadingPage.tsx";
@@ -11,6 +10,8 @@ import Sider from "antd/es/layout/Sider";
 import {Content} from "antd/es/layout/layout";
 import styles from './styles/ExchangePanel.module.css'
 import {MenuFoldOutlined, MenuUnfoldOutlined} from "@ant-design/icons";
+import {IUserInfo} from "../../models/Identity.ts";
+import {IdentityClient} from "../../clients/identity.client.ts";
 
 const { useToken } = theme;
 const fullScreen : CSSProperties = {width: '100%', height: '100%'}
@@ -31,15 +32,14 @@ const borderLeft = (radius: number) : CSSProperties => {
 
 export const ExchangePanel = () => {
     const { token } = useToken()
-    const [user, setUser] = useState({} as IUserInfo | null)
-
+    const [ user, setUser ] = useState( {} as IUserInfo | undefined)
+    
     useEffect(() => {
-        WebApiClients.info()
-            .then(value => setUser(value.data))
-            .catch(() => setUser(null))
+        IdentityClient.UserInfoAsync()
+            .then(value => setUser(value.data as IUserInfo))
     }, []);
-
-    if (user == null)
+    
+    if (user == undefined)
         return <Navigate to={RouteViews["login"]}/>
 
     const [collapsed, setCollapsed] = useState(false)

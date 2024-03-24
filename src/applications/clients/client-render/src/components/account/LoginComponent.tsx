@@ -4,7 +4,7 @@ import {IUserLogin} from "../../models/Identity.ts";
 import accountStyles from "./styles/Account.module.css"
 import {RouteViews} from "../../modules/RouteConfig.tsx";
 import {LockOutlined, MailOutlined} from "@ant-design/icons";
-import {WebApiClients} from "../../clients/webApiClients.ts";
+import {IdentityClient} from "../../clients/identity.client.ts";
 import {IAccountComponent} from "../../interfaces/IAccountComponent.tsx";
 import {Button, Card, Checkbox, Divider, Form, Input, notification, Spin, Typography} from "antd";
 
@@ -15,10 +15,11 @@ export const LoginComponent = () : IAccountComponent => {
 
     const onFinish = async (model: IUserLogin) => {
         setLoading(true)
-
+        
         try {
-            if ((await WebApiClients.login(model)).status == 200)
-                setLogin(true)
+            IdentityClient.LoginAsync(model)
+                .then(_ => setLogin(true))
+                .catch(reason => console.log(reason))
         }
         catch {
             api.error({

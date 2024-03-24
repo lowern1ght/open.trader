@@ -85,8 +85,8 @@ public static class ApplicationExtensions
                 {
                     var authorization = context.Request.Headers[HeaderNames.Authorization];
                     
-                    if (!string.IsNullOrEmpty(authorization) && authorization.ToString().StartsWith($"{JwtBearerDefaults.AuthenticationScheme} "))
-                        return JwtBearerDefaults.AuthenticationScheme;
+                    /*if (!string.IsNullOrEmpty(authorization) && authorization.ToString().StartsWith($"{JwtBearerDefaults.AuthenticationScheme} "))
+                        return JwtBearerDefaults.AuthenticationScheme;*/
 
                     // otherwise always check for cookie auth
                     return CookieAuthenticationDefaults.AuthenticationScheme;

@@ -1,14 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using OpenTrader.Storage.Account.Models;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OpenTrader.Identity.Service.Extensions;
 using OpenTrader.Identity.Service.Interfaces;
 using OpenTrader.Identity.Service.Models;
+using OpenTrader.Storage.Account.Models;
 
-namespace OpenTrader.WebApi.Controllers;
+namespace OpenTrader.WebApi.Controllers.Api;
 
 [ApiController]
-[Route("/[controller]/")]
+[Route("~/api/v1/[controller]/")]
 public class IdentityController(IIdentityService<TraderUser> identityService, ILogger<IdentityController> logger) : Controller
 {
     /// <summary>

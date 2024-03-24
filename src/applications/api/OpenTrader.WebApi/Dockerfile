@@ -19,6 +19,7 @@ RUN dotnet restore "src/applications/api/OpenTrader.WebApi/OpenTrader.WebApi.csp
 COPY . .
 WORKDIR "/src/src/applications/api/OpenTrader.WebApi"
 RUN dotnet build "OpenTrader.WebApi.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet dev-certs https --trust
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release

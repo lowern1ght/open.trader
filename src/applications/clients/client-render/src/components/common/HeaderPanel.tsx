@@ -3,25 +3,29 @@ import {Header} from "antd/es/layout/layout";
 import {LoginOutlined} from "@ant-design/icons";
 import {IUserInfo} from "../../models/Identity.ts";
 import styles from './styles/HeaderPanel.module.css'
-import {WebApiClients} from "../../clients/webApiClients.ts";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {RouteViews} from "../../modules/RouteConfig.tsx";
 import {Navigate} from "react-router-dom";
 import {CompactLogo} from "./LogoComponents.tsx";
+import {IdentityClient} from "../../clients/identity.client.ts";
 
 const { useToken } = theme;
 
-export const HeaderPanel = ({ user } : {user : IUserInfo}) => {
+export const HeaderPanel = ({ user } : {user : IUserInfo | undefined}) => {
     const { token } = useToken()
     const [logout, setLogout] = useState(false)
 
     const clickLogout = () => {
-        WebApiClients.logoutAsync()
-            .then(value => console.log(value))
 
-        setLogout(true)
+        useEffect(() => {
+            IdentityClient.LogoutAsync()
+                .then(_ => setLogout(true))
+        }, []);
     }
 
+    if (user == undefined)
+        return <Navigate to={RouteViews["main"]} replace/>
+    
     if (logout){
         return <Navigate to={RouteViews["main"]} replace/>
     }
@@ -37,7 +41,7 @@ export const HeaderPanel = ({ user } : {user : IUserInfo}) => {
 
             <span>
                 <Typography.Text type={"secondary"} style={{marginRight: '10px'}}>
-                    {user.email}
+                    {user?.email}
                 </Typography.Text>
 
                 <a onClick={clickLogout}>

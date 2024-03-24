@@ -8,6 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "repo", "repo", "{99A334F3-5
 		repo\open-trader.infrastructure.drawio.png = repo\open-trader.infrastructure.drawio.png
 		LICENSE = LICENSE
 		BUILD.md = BUILD.md
+		repo\logo\icon.svg = repo\logo\icon.svg
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{35D479A1-E7BC-4C66-B26C-A627063260DB}"
@@ -59,6 +60,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "builds", "builds", "{2EA2B79A-7F89-4A33-910E-7E1420017D2E}"
 	ProjectSection(SolutionItems) = preProject
 		deploy\builds\identity = deploy\builds\identity
+		deploy\builds\s3.minio = deploy\builds\s3.minio
+		deploy\builds\mq.rabbit = deploy\builds\mq.rabbit
+		deploy\builds\certbot = deploy\builds\certbot
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "migrations", "migrations", "{3148F6E1-1200-4AA9-8A31-9560D7E27357}"
@@ -70,14 +74,44 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pods", "pods", "{BD71655F-5
 	ProjectSection(SolutionItems) = preProject
 		deploy\pods\identity.pod.yaml = deploy\pods\identity.pod.yaml
 		deploy\pods\web-api.pod.yaml = deploy\pods\web-api.pod.yaml
+		deploy\pods\minio.s3.pod.yaml = deploy\pods\minio.s3.pod.yaml
+		deploy\pods\mq.rabbit.pod.yaml = deploy\pods\mq.rabbit.pod.yaml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "compose", "compose", "{D13E4BEF-A932-41E1-A563-F68B4A3041AF}"
 	ProjectSection(SolutionItems) = preProject
-		deploy\compose\identity-compose.yml = deploy\compose\identity-compose.yml
-		deploy\compose\network-compose.yml = deploy\compose\network-compose.yml
-		deploy\compose\s3-compose.yml = deploy\compose\s3-compose.yml
-		deploy\compose\services-compose.yml = deploy\compose\services-compose.yml
+		deploy\compose\opentrader.compose.yml = deploy\compose\opentrader.compose.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deployment", "deployment", "{E94D0D7F-26A8-4AF5-849C-260CF345A051}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\deployment\identity.deploy.yaml = deploy\deployment\identity.deploy.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "configs", "configs", "{B8F3D1C1-DCF6-4C1C-ABAC-3BFA9CE50B01}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\configs\nginx.conf = deploy\configs\nginx.conf
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "security", "security", "{B76DB0C4-3A15-4932-A6DC-BBA300C2DDC7}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\security\cert.key = deploy\security\cert.key
+		deploy\security\cert.pem = deploy\security\cert.pem
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "icons", "icons", "{180A22C3-2007-4878-A809-15271D9572BB}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\resources\icons\icon.ico = deploy\resources\icons\icon.ico
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "variables", "variables", "{3165420A-DC69-442F-B850-337AB1A5123A}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\variables\.env = deploy\variables\.env
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{AA1064EC-023D-4244-A164-A80105926E4C}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\builds\scripts\generate-ssl.sh = deploy\builds\scripts\generate-ssl.sh
 	EndProjectSection
 EndProject
 Global
@@ -108,6 +142,12 @@ Global
 		{3148F6E1-1200-4AA9-8A31-9560D7E27357} = {2EA2B79A-7F89-4A33-910E-7E1420017D2E}
 		{BD71655F-5846-4D1F-80CA-8B8D13FF17F4} = {BD958C62-E499-4E1E-873E-F4320CF4AC73}
 		{D13E4BEF-A932-41E1-A563-F68B4A3041AF} = {BD958C62-E499-4E1E-873E-F4320CF4AC73}
+		{E94D0D7F-26A8-4AF5-849C-260CF345A051} = {BD958C62-E499-4E1E-873E-F4320CF4AC73}
+		{B8F3D1C1-DCF6-4C1C-ABAC-3BFA9CE50B01} = {BD958C62-E499-4E1E-873E-F4320CF4AC73}
+		{B76DB0C4-3A15-4932-A6DC-BBA300C2DDC7} = {BD958C62-E499-4E1E-873E-F4320CF4AC73}
+		{180A22C3-2007-4878-A809-15271D9572BB} = {25D3E521-3C87-4203-B3B2-C43BA246F22F}
+		{3165420A-DC69-442F-B850-337AB1A5123A} = {BD958C62-E499-4E1E-873E-F4320CF4AC73}
+		{AA1064EC-023D-4244-A164-A80105926E4C} = {2EA2B79A-7F89-4A33-910E-7E1420017D2E}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{9D117F18-513D-40F3-868F-A4E30A4F1442}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

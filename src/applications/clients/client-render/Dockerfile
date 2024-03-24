@@ -1,10 +1,19 @@
-FROM node:lts-alpine
+FROM node:lts-jessie
+
 ENV NODE_ENV=production
-WORKDIR /usr/src/app
-COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
-RUN npm install --production --silent && mv node_modules ../
+
+WORKDIR /usr/src/client-render
+
 COPY . .
+
+RUN npm install
+
+RUN npm build
+
 EXPOSE 6000
+
 RUN chown -R node /usr/src/app
+
 USER node
-CMD ["npm", "start"]
+
+CMD ["npm", "preview"]

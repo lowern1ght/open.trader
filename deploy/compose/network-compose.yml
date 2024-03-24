@@ -1,5 +1,0 @@
-﻿version: '3.8'
-
-networks:
-  open.trader-network:
-    driver: bridge

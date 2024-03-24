@@ -1,14 +1,18 @@
 import {JSX} from "react";
 import useSWR, {SWRResponse} from "swr";
-import {ExchangeModel} from "./models/ExchangeModels.ts";
+import {ExchangeModel} from "../clients/models/ExchangeModels.ts";
 import {IRegisterModel, IUserInfo, IUserLogin} from "../models/Identity.ts";
-import {fetcher, imageExchangeFetcher, loginFetcher} from "./clientFetcher.tsx";
+import {fetcher, imageExchangeFetcher, loginFetcher} from "../clients/clientFetcher.tsx";
 
-export const webApiProxy = process.env.TRADER_PROXY_WEB_API ?? "web-api"
+export var webApiProxy = "web-api"
 
 /* Identity */
 export function useInfoUser() : SWRResponse<IUserInfo, Error> {
     return useSWR(fetcher(`${webApiProxy}/identity`, null, "GET"))
+}
+
+export function useLogoutUser() : SWRResponse {
+    return useSWR(fetcher(`${webApiProxy}/identity/logout`, null, "POST"))
 }
 
 export function useLoginUser(user: IUserLogin) : SWRResponse<{token: string}, Error> {

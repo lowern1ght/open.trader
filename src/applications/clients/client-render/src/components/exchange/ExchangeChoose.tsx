@@ -1,7 +1,7 @@
 import {Content, Footer} from "antd/es/layout/layout";
 import {ThemeSwitcher} from "../account/ThemeSwitcher.tsx";
 import {LogoComponents} from "../common/LogoComponents.tsx";
-import {useExchanges} from "../../clients/webApiClients.ts";
+import {useExchanges} from "../../hooks/webApiClients.ts";
 import {ExchangeCardComponent} from "./ExchangeCardComponent.tsx";
 import {Col, Divider, Layout, Row, Space, Spin, Typography, FloatButton, Result} from "antd";
 

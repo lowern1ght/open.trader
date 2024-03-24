@@ -1,0 +1,19 @@
+﻿apiVersion: v1
+kind: Pod
+metadata:
+  name: s3.storage
+  labels:
+    app: s3.storage
+spec:
+  containers:
+    - name: s3.storage
+      image: opentrader/s3:latest
+      imagePullPolicy: IfNotPresent
+      command: ['sh', '-c', 'server --console-address ":10000" --address ":10001" /data"']
+      volumeMounts:
+        - name: data
+          mountPath: /data
+      ports:
+        - containerPort: 10000
+        - containerPort: 10001
+  restartPolicy: Always

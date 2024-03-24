@@ -5,7 +5,7 @@ import {defineConfig, loadEnv, ProxyOptions} from 'vite'
 const defaultProxy = {
   "/web-api": {
     changeOrigin: true,
-    target: `http://localhost:5001`,
+    target: `http://localhost:5000`,
     rewrite: (path) => path.replace(/^\/web-api/, ''),
   }
 }
@@ -18,7 +18,7 @@ interface ITraderClientConfig {
 export default ({ mode }) => {
 
   const defaultConfig : ITraderClientConfig = {
-    port: 6000,
+    port: 3000,
     proxy: defaultProxy
   }
 
@@ -31,7 +31,7 @@ export default ({ mode }) => {
   console.log(traderClientConfig)
 
   return defineConfig({
-    plugins: [react(), mkcert()],
+    plugins: [react()],
     server: {
       strictPort: true,
       port: traderClientConfig.port,

@@ -1,14 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OpenTrader.Constants.General;
 using OpenTrader.Exchange.Service.Interfaces;
 
-namespace OpenTrader.WebApi.Controllers;
+namespace OpenTrader.WebApi.Controllers.Api;
 
 [Authorize]
 [ApiController]
-[Route("/[controller]/")]
+[Route("~/api/v1/[controller]/")]
 [EnableCors(CorsPolicies.AllowAll)]
 public class ExchangeController(IExchangeService exchangeService, IExchangeImageService imageService) : Controller
 {

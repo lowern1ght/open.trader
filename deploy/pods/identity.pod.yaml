@@ -7,7 +7,11 @@ metadata:
 spec:
   containers:
     - name: identity-db
-      image: opentrader/identity-db
+      image: opentrader/identity-db:latest
       imagePullPolicy: IfNotPresent
+      env:
+        - name: POSTGRES_HOST_AUTH_METHOD
+          value: trust
+        - name: POSTGRES_PASSWORD
+          value: 5Q0SltGdy1mKy2Re
   restartPolicy: Always
-  hostname: opentrader.identity.db
