@@ -5,7 +5,7 @@
 /// </summary>
 public static class Identity
 {
-    public const string CookiePrefix = ".Trader";
+    private const string CookiePrefix = ".Trader";
 
     public class Query
     {
