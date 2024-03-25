@@ -64,10 +64,16 @@ public class IdentityService(
             throw new InvalidOperationException($"{nameof(contextAccessor.HttpContext)} is null");
 
         var claimsPrincipal = traderUser.ToClaimPrincipal();
+
+        var properties = new AuthenticationProperties
+        {
+            IsPersistent = true,
+            ExpiresUtc = DateTimeOffset.Now.AddYears(1)
+        };
         
         await contextAccessor.HttpContext.SignInAsync(
             CookieAuthenticationDefaults.AuthenticationScheme,
-            claimsPrincipal);
+            claimsPrincipal, properties);
     }
 
     /// <summary> Create user from <code>RegisterModel</code>> </summary>

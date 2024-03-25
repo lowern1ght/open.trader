@@ -40,7 +40,57 @@ public class IdentityController(IIdentityService<TraderUser> identityService, IL
         
         return Ok($"Successes login [{HttpContext.User.GetHashCode()}]");
     }
+    
+    /// <summary> Logout authorized user </summary>
+    /// <response code="200">Successes generate token from <code>LoginModel</code></response>
+    /// <response code="500">Unhandled exception</response>
+    [Authorize, HttpPost("logout")]
+    public async Task<IActionResult> LogoutAsync(CancellationToken token)
+    {
+        await identityService.LogoutAsync(token);
+        return Ok();
+    }
 
+    /// <summary> Register new user </summary>
+    /// <param name="model"></param>
+    /// <param name="token"></param>
+    /// <response code="200">Create OpenTrader user from <code>RegisterModel</code></response>
+    /// <response code="400">If data from create is not valid</response>
+    /// <response code="500">Unhandled exception</response>
+    [AllowAnonymous, HttpPost("register")]
+    public async Task<IActionResult> RegisterAsync([FromBody] RegisterModel model, CancellationToken token)
+    {
+        if (!ModelState.IsValid) 
+            return ValidationProblem(ModelState);
+
+        try
+        {
+            await identityService.RegisterAsync(model, token);
+        }
+        catch (InvalidCreateUser exception)
+        {
+            logger.Log(LogLevel.Information, exception.Message);
+            return BadRequest(exception.Message);
+        }
+        catch (Exception exception)
+        {
+            logger.Log(LogLevel.Error, "${Exception}", exception.Message);
+            return Problem(exception.Message);
+        }
+
+        return Ok();
+    }
+
+    /// <summary> Get user info on front </summary>
+    /// <returns><code>ClaimIdentity</code></returns>
+    /// <response code="200">Return <c>ClaimIdentity</c> from <c>HttpContext</c>></response>
+    /// <response code="500">Unhandled exception</response>
+    [HttpGet, Authorize]
+    public Task<IActionResult> InfoAsync()
+    {
+        return Task.FromResult<IActionResult>(Json(HttpContext.User.Claims.ToData()));
+    }
+    
     #region JwtToken
 
     /// <summary> Create JWT Token from Cookie Identity </summary>
@@ -80,54 +130,4 @@ public class IdentityController(IIdentityService<TraderUser> identityService, IL
     }
 
     #endregion
-    
-    /// <summary> Logout authorized user </summary>
-    /// <response code="200">Successes generate token from <code>LoginModel</code></response>
-    /// <response code="500">Unhandled exception</response>
-    [Authorize, HttpPost("logout")]
-    public async Task<IActionResult> LogoutAsync(CancellationToken token)
-    {
-        await identityService.LogoutAsync(token);
-        return Ok();
-    }
-
-    /// <summary> Register new user </summary>
-    /// <param name="model"></param>
-    /// <param name="token"></param>
-    /// <response code="200">Create OpenTrader user from <code>RegisterModel</code></response>
-    /// <response code="400">If data from create is not valid</response>
-    /// <response code="500">Unhandled exception</response>
-    [AllowAnonymous, HttpPost("register")]
-    public async Task<IActionResult> RegisterAsync(RegisterModel model, CancellationToken token)
-    {
-        if (!ModelState.IsValid) 
-            return ValidationProblem(ModelState);
-
-        try
-        {
-            await identityService.RegisterAsync(model, token);
-        }
-        catch (InvalidCreateUser exception)
-        {
-            logger.Log(LogLevel.Information, exception.Message);
-            return BadRequest(exception.Message);
-        }
-        catch (Exception exception)
-        {
-            logger.Log(LogLevel.Error, "${Exception}", exception.Message);
-            return Problem(exception.Message);
-        }
-
-        return Ok();
-    }
-
-    /// <summary> Get user info on front </summary>
-    /// <returns><code>ClaimIdentity</code></returns>
-    /// <response code="200">Return <c>ClaimIdentity</c> from <c>HttpContext</c>></response>
-    /// <response code="500">Unhandled exception</response>
-    [HttpGet, Authorize]
-    public Task<IActionResult> InfoAsync()
-    {
-        return Task.FromResult<IActionResult>(Json(HttpContext.User.Claims.ToData()));
-    }
 }

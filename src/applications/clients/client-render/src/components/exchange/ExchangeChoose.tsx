@@ -45,7 +45,11 @@ export const ExchangeChoose = () => {
                                         <ExchangeCardComponent exchange={model}/>
                                     </Col>)
                                 })
-                            : <div>Ops... some wrong</div>
+                            : <div>
+                                <Typography.Text>
+                                    Ops... some wrong
+                                </Typography.Text>
+                             </div>
                         }
                     </Row>
                 </Spin>

@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {Link, Navigate} from "react-router-dom";
 import accountStyles from "./styles/Account.module.css"
 import {RouteViews} from "../../modules/RouteConfig.tsx";
@@ -15,10 +15,8 @@ export const RegisterComponent = () : IAccountComponent => {
     const onFinish = async (model: IRegisterModel) => {
         setLoading(true)
 
-        useEffect(() => {
-            IdentityClient.RegisterAsync(model)
-                .then(_ => setRegister(true))
-        }, []);
+        IdentityClient.RegisterAsync(model)
+            .then(_ => setRegister(true))
         
         setLoading(false)
     }
@@ -69,7 +67,7 @@ export const RegisterComponent = () : IAccountComponent => {
                     </Form.Item>
 
                     <Form.Item
-                        name="confirmPassword"
+                        name="passwordConfirm"
                         rules={[ {required: true, message: 'Please input Password!'},
                             ({getFieldValue}) => ({
                                 validator(_, value) {

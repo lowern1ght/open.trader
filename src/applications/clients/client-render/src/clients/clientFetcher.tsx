@@ -43,7 +43,7 @@ export async function loginFetcher(url: string, user?: any) {
 }
 
 export async function imageExchangeFetcher(id: string) : Promise<JSX.Element | AxiosResponse> {
-    const response = await axios.get(`${webApiProxy}/exchanges/${id}/image`);
+    const response = await axios.get(`${webApiProxy}/v1/exchanges/${id}/image`);
 
     return response.status == 200
         ?   <span style={{width: 'auto', height: 'auto'}}>

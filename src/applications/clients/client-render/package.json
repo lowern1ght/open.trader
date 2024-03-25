@@ -4,10 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host --port 4000",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview --host --port 4000"
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
@@ -31,9 +31,7 @@
     "sort-by": "^0.0.2",
     "typescript": "^5.2.2",
     "usehooks-ts": "^2.9.1",
-    "vite": "^5.0.0"
-  },
-  "devDependencies": {
+    "vite": "^5.0.0",
     "@types/ts-nameof": "^4.2.5",
     "axios": "^1.6.8",
     "css-loader": "^6.8.1",
