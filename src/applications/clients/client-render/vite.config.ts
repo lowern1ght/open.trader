@@ -12,7 +12,7 @@ export default ({ mode }) => {
   let target : string = process.env?.TRADER_PROXY_URL ?? "https://localhost:2000";
   
   const defaultProxy = {
-    "/api": {
+    '/api': {
       changeOrigin: true,
       target: target,
       rewrite: (path) => path.replace(/^\/api/, ''),
@@ -20,7 +20,7 @@ export default ({ mode }) => {
   }
   
   const defaultConfig : ITraderClientConfig = {
-    port: parseInt(process.env?.TRADER_CLIENT_PORT ?? `4000`) ,
+    port: parseInt(process.env?.TRADER_CLIENT_PORT ?? `4000`),
     proxy: defaultProxy
   }
 

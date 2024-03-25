@@ -13,7 +13,7 @@ export const TraderAuthorizeProvider = ({ children, loadingPage, loginPage } : I
 
     useEffect(() => {
         setTimeout(() => {
-            IdentityClient.UserInfoAsync()
+            IdentityClient.userInfoAsync()
                 .then(_ => setLogin(true))
             
             setNeedLogin(true)

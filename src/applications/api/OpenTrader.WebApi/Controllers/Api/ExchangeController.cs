@@ -29,8 +29,6 @@ public class ExchangeController(ILogger<ExchangeController> logger, IExchangeSer
     /// <summary> Return svg image from s3 </summary>
     /// <param name="name"></param>
     /// <param name="token"></param>
-    /// <response code="200">Return <c>ClaimIdentity</c> from <c>HttpContext</c>></response>
-    /// <response code="500">Unhandled exception</response>
     [Authorize, HttpGet("{name}/image")]
     [ResponseCache(Duration = 3600, Location = ResponseCacheLocation.Any)]
     public async Task<IActionResult> ImageAsync(string name, CancellationToken token)

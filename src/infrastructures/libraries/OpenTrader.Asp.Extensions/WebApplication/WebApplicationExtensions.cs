@@ -91,7 +91,7 @@ public static class WebApplicationBuilderExtensions
         {
             var filePath = Path.Combine(AppContext.BaseDirectory,
                 $"{Assembly.GetEntryAssembly()?.GetName().Name}.xml");
-            
+
             options.IncludeXmlComments(filePath);
         });
 

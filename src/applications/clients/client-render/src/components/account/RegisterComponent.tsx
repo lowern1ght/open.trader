@@ -15,7 +15,7 @@ export const RegisterComponent = () : IAccountComponent => {
     const onFinish = async (model: IRegisterModel) => {
         setLoading(true)
 
-        IdentityClient.RegisterAsync(model)
+        IdentityClient.registerAsync(model)
             .then(_ => setRegister(true))
         
         setLoading(false)

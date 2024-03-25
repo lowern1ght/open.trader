@@ -17,7 +17,7 @@ export const LoginComponent = () : IAccountComponent => {
         setLoading(true)
         
         try {
-            IdentityClient.LoginAsync(model)
+            IdentityClient.loginAsync(model)
                 .then(_ => setLogin(true))
                 .catch(reason => console.log(reason))
         }

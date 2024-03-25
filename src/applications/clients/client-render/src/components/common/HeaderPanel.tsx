@@ -18,7 +18,7 @@ export const HeaderPanel = ({ user } : {user : IUserInfo | undefined}) => {
     const clickLogout = () => {
 
         useEffect(() => {
-            IdentityClient.LogoutAsync()
+            IdentityClient.logoutAsync()
                 .then(_ => setLogout(true))
         }, []);
     }

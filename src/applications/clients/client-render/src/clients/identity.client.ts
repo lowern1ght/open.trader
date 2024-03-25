@@ -1,22 +1,21 @@
 import axios from "axios";
+import {proxy} from "./constants.ts";
 import {IRegisterModel, IUserLogin} from "../models/Identity.ts";
 
-let proxyWebApi = "/api"
-
 export class IdentityClient {
-    public static async LoginAsync(user: IUserLogin) {
-        return await axios.post(`${proxyWebApi}/v1/identity/login`, user)
+    public static async loginAsync(user: IUserLogin) {
+        return await axios.post(`${proxy}/v1/identity/login`, user)
     }
 
-    public static async RegisterAsync(model: IRegisterModel) {
-        return await axios.post(`${proxyWebApi}/v1/identity/register`, model)
+    public static async registerAsync(model: IRegisterModel) {
+        return await axios.post(`${proxy}/v1/identity/register`, model)
     }
 
-    public static async UserInfoAsync() {
-        return await axios.get(`${proxyWebApi}/v1/identity`, )
+    public static async userInfoAsync() {
+        return await axios.get(`${proxy}/v1/identity`, )
     }
 
-    public static async LogoutAsync() {
-        return await axios.post(`${proxyWebApi}/v1/identity/logout`)
+    public static async logoutAsync() {
+        return await axios.post(`${proxy}/v1/identity/logout`)
     }
 }
