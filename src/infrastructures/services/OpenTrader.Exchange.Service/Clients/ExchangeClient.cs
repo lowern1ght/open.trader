@@ -9,7 +9,7 @@ public class ExchangeClient : IExchangeClient
     /// </summary>
     /// <param name="token"></param>
     /// <returns></returns>
-    public Task<IEnumerable<Models.Exchange>> GetCollectionAsync(CancellationToken token)
+    public Task<IEnumerable<Models.Exchange>> ListAsync(CancellationToken token)
     {
         throw new NotImplementedException();
     }

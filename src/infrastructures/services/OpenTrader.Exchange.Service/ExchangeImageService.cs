@@ -42,6 +42,7 @@ public class ExchangeImageService(IMinioClient minioClient, IHttpContextAccessor
             .WithBucket(S3Storage.ExchangeBucketName)
             .WithCallbackStream(async (stream, cancellationToken) =>
             {
+                cancellationToken.ThrowIfCancellationRequested();
                 await stream.CopyToAsync(imageResult.FileStream, cancellationToken);
             });
 

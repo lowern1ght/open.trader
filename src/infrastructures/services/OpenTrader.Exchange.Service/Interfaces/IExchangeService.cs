@@ -2,5 +2,5 @@
 
 public interface IExchangeService
 {
-    Task<IEnumerable<Models.Exchange>> CollectionAsync(CancellationToken token);
+    Task<IEnumerable<Models.Exchange>> ListAsync(CancellationToken token);
 }

@@ -1,8 +1,6 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
-using System.Text.Json;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -22,7 +20,7 @@ public class IdentityService(
     UserManager<TraderUser> userManager,
     IdentityConfig identityConfig,
     IdentityTraderDbContext traderDbContext)
-    : IIdentityService<TraderUser>
+    : IIdentityService
 {
     public async Task LogoutAsync(CancellationToken token)
     {

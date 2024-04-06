@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace OpenTrader.Asp.Extensions.WebApplication;
+namespace OpenTrader.Dependency.WebApplication;
 
 public static class WebApplicationBuilderExtensions
 {
@@ -92,7 +92,8 @@ public static class WebApplicationBuilderExtensions
             var filePath = Path.Combine(AppContext.BaseDirectory,
                 $"{Assembly.GetEntryAssembly()?.GetName().Name}.xml");
 
-            options.IncludeXmlComments(filePath);
+            if (File.Exists(filePath)) 
+                options.IncludeXmlComments(filePath);
         });
 
         return builder;

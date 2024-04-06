@@ -2,8 +2,12 @@ import './index.css'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import {AppComponent} from "./components/AppComponent.tsx";
+import {useMockAxios} from "./clients/fake.clients.ts";
 
-export const proxyWebApi = "_"
+
+const dev : boolean = true;
+if (dev) useMockAxios()
+
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>

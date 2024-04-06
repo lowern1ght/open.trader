@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OpenTrader.Exchange.Service.Models.Configuration;
 
-namespace OpenTrader.Asp.Extensions.Configuration;
+namespace OpenTrader.Dependency.Configuration;
 
 public static class ConfigurationModels
 {

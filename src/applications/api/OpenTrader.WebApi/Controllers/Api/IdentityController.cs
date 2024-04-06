@@ -4,7 +4,6 @@ using OpenTrader.Identity.Service.Exceptions;
 using OpenTrader.Identity.Service.Extensions;
 using OpenTrader.Identity.Service.Interfaces;
 using OpenTrader.Identity.Service.Models;
-using OpenTrader.Storage.Account.Models;
 
 namespace OpenTrader.WebApi.Controllers.Api;
 
@@ -15,7 +14,7 @@ namespace OpenTrader.WebApi.Controllers.Api;
 /// <param name="logger"></param>
 [ApiController]
 [Route("~/api/v1/[controller]/")]
-public class IdentityController(IIdentityService<TraderUser> identityService, ILogger<IdentityController> logger) : Controller
+public class IdentityController(IIdentityService identityService, ILogger<IdentityController> logger) : Controller
 {
     /// <summary> Login user with <c>Asp.Identity</c>> </summary>
     /// <param name="model"></param>

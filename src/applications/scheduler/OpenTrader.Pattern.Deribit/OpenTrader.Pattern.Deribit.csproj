@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\infrastructures\libraries\OpenTrader.Dependency\OpenTrader.Dependency.csproj" />
+      <ProjectReference Include="..\..\..\infrastructures\libraries\OpenTrader.Logger\OpenTrader.Logger.csproj" />
+      <ProjectReference Include="..\..\..\infrastructures\libraries\OpenTrader.Pattern.Core\OpenTrader.Pattern.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Schedules\" />
+    </ItemGroup>
+
+</Project>

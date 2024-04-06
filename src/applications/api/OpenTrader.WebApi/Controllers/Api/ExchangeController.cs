@@ -10,8 +10,7 @@ namespace OpenTrader.WebApi.Controllers.Api;
 /// <param name="logger"></param>
 /// <param name="imageService"></param>
 /// <param name="exchangeService"></param>
-[Authorize]
-[ApiController]
+[Authorize, ApiController]
 [Route("~/api/v1/[controller]/")]
 [EnableCors(CorsPolicies.AllowAll)]
 public class ExchangeController(ILogger<ExchangeController> logger, IExchangeService exchangeService, IExchangeImageService imageService) : Controller
@@ -23,7 +22,7 @@ public class ExchangeController(ILogger<ExchangeController> logger, IExchangeSer
     [ResponseCache(Duration = 1200, Location = ResponseCacheLocation.Any)]
     public async Task<IActionResult> ListAsync(CancellationToken token)
     {
-        return Ok((await exchangeService.CollectionAsync(token)).ToArray());
+        return Ok((await exchangeService.ListAsync(token)).ToArray());
     }
     
     /// <summary> Return svg image from s3 </summary>
@@ -31,7 +30,7 @@ public class ExchangeController(ILogger<ExchangeController> logger, IExchangeSer
     /// <param name="token"></param>
     [Authorize, HttpGet("{name}/image")]
     [ResponseCache(Duration = 3600, Location = ResponseCacheLocation.Any)]
-    public async Task<IActionResult> ImageAsync(string name, CancellationToken token)
+    public async Task<IActionResult> ImageAsync([FromRoute] string name, CancellationToken token)
     {
         try
         {

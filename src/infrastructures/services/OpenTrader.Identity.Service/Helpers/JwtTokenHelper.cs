@@ -1,8 +1,7 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+﻿using System.Text;
 using System.Security.Claims;
-using System.Text;
 using Microsoft.IdentityModel.Tokens;
-using OpenTrader.Identity.Service.Models;
+using System.IdentityModel.Tokens.Jwt;
 using OpenTrader.Identity.Service.Models.Configuration;
 
 namespace OpenTrader.Identity.Service.Helpers;

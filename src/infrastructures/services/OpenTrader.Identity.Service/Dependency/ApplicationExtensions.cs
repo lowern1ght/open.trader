@@ -37,7 +37,7 @@ public static class ApplicationExtensions
         
         collection.AddHttpContextAccessor();
         collection.AddSingleton(identityConfig); //Add IdentityConfig to accesses context
-        collection.AddTransient<IIdentityService<TraderUser>, IdentityService>();
+        collection.AddTransient<IIdentityService, IdentityService>();
         
         collection.Configure<CookiePolicyOptions>(options =>
         {
