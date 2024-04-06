@@ -1,9 +1,7 @@
-using System.Reflection;
 using OpenTrader.Constants.General;
 using OpenTrader.Logger.Dependency;
 using OpenTrader.Dependency.WebApplication;
 using OpenTrader.Pattern.Core.Dependency.LibraryExtensions;
-using OpenTrader.Pattern.Core.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
