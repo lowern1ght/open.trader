@@ -6,15 +6,9 @@
 public static class Identity
 {
     private const string CookiePrefix = ".Trader";
-
-    public class Query
-    {
-        public const string ReturnUrl = "returnUrl";
-    }
     
     public static class Path
     {
-        public const string AccessesDenied = "/identity";
         public const string LoginUrl = "/identity/login";
         public const string LogoutUrl = "/identity/logout";
     }

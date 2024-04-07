@@ -23,7 +23,6 @@ services:
       dockerfile: ../../src/applications/api/OpenTrader.WebApi/Dockerfile
     depends_on: 
       - identity-db
-      - s3.minio
     ports:
       - "5000:80"
     environment:
@@ -61,25 +60,6 @@ services:
     environment:
       - TRADER_CLIENT_PORT=4000
       - TRADER_PROXY_URL=https://proxy-nginx
-    networks:
-      - open.trader-network
-  
-  s3.minio:
-    image: minio/minio
-    
-    hostname: s3-minio
-    restart: always
-    ports:
-      - "10000:10000"
-      - "10001:10001"
-    volumes:
-      - minio_storage:/data
-    environment:
-      MINIO_ROOT_USER: admin
-      MINIO_ROOT_PASSWORD: LgN0mn77lPdkfOCEaSO9
-      MINIO_ACCESS_KEY: 7wNyb4lMFhIJ1bv0c4ws
-      MINIO_SECRET_KEY: zVYrAVtFW4Fhu8Kyu6u7Of4xEPc4nUFg8qJ6MpF1
-    command: server --console-address ":10000" --address ":10001" /data
     networks:
       - open.trader-network
 

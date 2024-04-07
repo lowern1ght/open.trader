@@ -115,6 +115,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTrader.Pattern.Deribit"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTrader.Pattern.Core", "src\infrastructures\libraries\OpenTrader.Pattern.Core\OpenTrader.Pattern.Core.csproj", "{DD6F4A08-0DF1-489B-9C03-E83583D3C9F8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "old", "old", "{7CDA1E76-491D-412F-B988-D0F77CE8828B}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\compose\old\s3-compose.yml = deploy\compose\old\s3-compose.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -152,6 +157,7 @@ Global
 		{99155B46-EC95-4A85-8BE8-A43377F97951} = {CBA2BC84-73C7-426C-8B9D-D443E0BA73AF}
 		{0968E1A8-8F8D-471A-976A-49669D97025F} = {88FF3E72-52E6-4CBB-BEFB-29E44D0C58BA}
 		{DD6F4A08-0DF1-489B-9C03-E83583D3C9F8} = {331EC2C4-45BA-4F0A-8552-F6042F64A78E}
+		{7CDA1E76-491D-412F-B988-D0F77CE8828B} = {D13E4BEF-A932-41E1-A563-F68B4A3041AF}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{9D117F18-513D-40F3-868F-A4E30A4F1442}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

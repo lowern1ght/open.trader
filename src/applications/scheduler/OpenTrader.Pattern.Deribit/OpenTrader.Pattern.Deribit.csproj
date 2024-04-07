@@ -16,8 +16,4 @@
       <ProjectReference Include="..\..\..\infrastructures\libraries\OpenTrader.Pattern.Core\OpenTrader.Pattern.Core.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Schedules\" />
-    </ItemGroup>
-
 </Project>

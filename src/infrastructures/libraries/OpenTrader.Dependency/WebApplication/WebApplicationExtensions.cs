@@ -94,6 +94,8 @@ public static class WebApplicationBuilderExtensions
 
             if (File.Exists(filePath)) 
                 options.IncludeXmlComments(filePath);
+            
+            options.EnableAnnotations();
         });
 
         return builder;

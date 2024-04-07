@@ -4,6 +4,7 @@ using OpenTrader.Identity.Service.Exceptions;
 using OpenTrader.Identity.Service.Extensions;
 using OpenTrader.Identity.Service.Interfaces;
 using OpenTrader.Identity.Service.Models;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace OpenTrader.WebApi.Controllers.Api;
 
@@ -81,10 +82,9 @@ public class IdentityController(IIdentityService identityService, ILogger<Identi
     }
 
     /// <summary> Get user info on front </summary>
-    /// <returns><code>ClaimIdentity</code></returns>
-    /// <response code="200">Return <c>ClaimIdentity</c> from <c>HttpContext</c>></response>
-    /// <response code="500">Unhandled exception</response>
+    /// <returns><see cref="UserModel"/></returns>
     [HttpGet, Authorize]
+    [SwaggerResponse(StatusCodes.Status200OK, "Get user claims from cookie", typeof(UserModel))]
     public Task<IActionResult> InfoAsync()
     {
         return Task.FromResult<IActionResult>(Json(HttpContext.User.Claims.ToData()));
