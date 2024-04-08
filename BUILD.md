@@ -3,10 +3,20 @@
 Generate ssl certificate in directory `{project_folder}/deploy/security`
 
 ```bash
+openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout ./deploy/security/cert.key -out ./deploy/security/cert.pem
+```
+
+# Deploy project
+
+
+
+1. Run docker-compose file
+
+```bash
 
 ```
 
-# Build ~~project~~ `OpenTrader`
+# Build `OpenTrader` images
 
 1. Run docker service(_linux_) or application(_windows_)
 2. Execute script (wip) `project-folder/builds/[install.sh] || [install.bat]`
