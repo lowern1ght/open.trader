@@ -1,6 +1,6 @@
-import {Layout, Space, Spin, Typography} from "antd";
-import {Content} from "antd/es/layout/layout";
 import logoSvg from "../assets/max_icon.svg";
+import {Content} from "antd/es/layout/layout";
+import {Layout, Space, Spin, Typography} from "antd";
 
 export const LoadingPage = () => {
     return (

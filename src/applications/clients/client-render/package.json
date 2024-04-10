@@ -4,14 +4,15 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host --port 4000",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview --host --port 4000"
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
     "@react-buddy/ide-toolbox": "^2.4.0",
+    "@react-icons/all-files": "^4.1.0",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
@@ -19,6 +20,8 @@
     "@vitejs/plugin-react-swc": "^3.5.0",
     "ant-design": "^1.0.0",
     "antd": "^5.12.2",
+    "axios": "^1.6.8",
+    "css-loader": "^6.8.1",
     "eslint": "^8.53.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.4",
@@ -28,18 +31,17 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.0",
+    "sass": "^1.69.5",
     "sort-by": "^0.0.2",
+    "swr": "^2.2.4",
     "typescript": "^5.2.2",
     "usehooks-ts": "^2.9.1",
-    "vite": "^5.0.0"
+    "vite": "^5.0.0",
+    "vite-plugin-mkcert": "^1.17.4"
   },
   "devDependencies": {
     "@types/ts-nameof": "^4.2.5",
-    "axios": "^1.6.8",
-    "css-loader": "^6.8.1",
-    "sass": "^1.69.5",
-    "swr": "^2.2.4",
-    "ts-nameof": "^5.0.0",
-    "vite-plugin-mkcert": "^1.17.4"
+    "axios-mock-adapter": "^1.22.0",
+    "ts-nameof": "^5.0.0"
   }
 }

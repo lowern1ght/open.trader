@@ -1,14 +1,5 @@
 import react from '@vitejs/plugin-react-swc'
-import mkcert from 'vite-plugin-mkcert'
 import {defineConfig, loadEnv, ProxyOptions} from 'vite'
-
-const defaultProxy = {
-  "/web-api": {
-    changeOrigin: true,
-    target: `http://localhost:5000`,
-    rewrite: (path) => path.replace(/^\/web-api/, ''),
-  }
-}
 
 interface ITraderClientConfig {
   port?: number,
@@ -16,9 +7,20 @@ interface ITraderClientConfig {
 }
 
 export default ({ mode }) => {
+  process.env = {...process.env, ...loadEnv(mode, process.cwd())};
 
+  let target : string = process.env?.TRADER_PROXY_URL ?? "https://localhost:2000";
+  
+  const defaultProxy = {
+    '/api': {
+      changeOrigin: true,
+      target: target,
+      rewrite: (path) => path.replace(/^\/api/, ''),
+    }
+  }
+  
   const defaultConfig : ITraderClientConfig = {
-    port: 3000,
+    port: parseInt(process.env?.TRADER_CLIENT_PORT ?? `4000`),
     proxy: defaultProxy
   }
 
@@ -27,20 +29,19 @@ export default ({ mode }) => {
   if (traderClientConfig.proxy == null) {
     traderClientConfig.proxy = defaultProxy
   }
-
-  console.log(traderClientConfig)
-
+  
   return defineConfig({
     plugins: [react()],
     server: {
       strictPort: true,
       port: traderClientConfig.port,
-      proxy: traderClientConfig.proxy
+      proxy: traderClientConfig.proxy,
+      host: "0.0.0.0"
     },
     preview: {
-      strictPort: true,
       port: traderClientConfig.port,
-      proxy: traderClientConfig.proxy
+      proxy: traderClientConfig.proxy,
+      host: "0.0.0.0"
     }
   })
 }

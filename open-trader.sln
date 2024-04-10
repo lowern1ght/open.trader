@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "repo", "repo", "{99A334F3-5
 		LICENSE = LICENSE
 		BUILD.md = BUILD.md
 		repo\logo\icon.svg = repo\logo\icon.svg
+		FUNDING.yml = FUNDING.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{35D479A1-E7BC-4C66-B26C-A627063260DB}"
@@ -22,8 +23,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "storages", "storages", "{71723F05-D07D-4CCF-8C9A-169F9B9FAF19}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{CBA2BC84-73C7-426C-8B9D-D443E0BA73AF}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{BB8504F7-AA43-43B0-AA8D-C28F43C62325}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTrader.WebApi", "src\applications\api\OpenTrader.WebApi\OpenTrader.WebApi.csproj", "{9D117F18-513D-40F3-868F-A4E30A4F1442}"
 EndProject
@@ -49,7 +48,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTrader.Exchange.Service
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libraries", "libraries", "{331EC2C4-45BA-4F0A-8552-F6042F64A78E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTrader.Asp.Extensions", "src\infrastructures\libraries\OpenTrader.Asp.Extensions\OpenTrader.Asp.Extensions.csproj", "{978A090C-447E-42BE-BE8C-18E3B297CEC8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTrader.Dependency", "src\infrastructures\libraries\OpenTrader.Dependency\OpenTrader.Dependency.csproj", "{978A090C-447E-42BE-BE8C-18E3B297CEC8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STBL.System.Extensions", "src\infrastructures\libraries\STBL.System.Extensions\STBL.System.Extensions.csproj", "{F12A0A1D-19CB-486C-9ECD-D181C6CC1EB7}"
 EndProject
@@ -70,22 +69,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "migrations", "migrations", 
 		deploy\builds\migrations\init-identity.sql = deploy\builds\migrations\init-identity.sql
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pods", "pods", "{BD71655F-5846-4D1F-80CA-8B8D13FF17F4}"
-	ProjectSection(SolutionItems) = preProject
-		deploy\pods\identity.pod.yaml = deploy\pods\identity.pod.yaml
-		deploy\pods\web-api.pod.yaml = deploy\pods\web-api.pod.yaml
-		deploy\pods\minio.s3.pod.yaml = deploy\pods\minio.s3.pod.yaml
-		deploy\pods\mq.rabbit.pod.yaml = deploy\pods\mq.rabbit.pod.yaml
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "compose", "compose", "{D13E4BEF-A932-41E1-A563-F68B4A3041AF}"
 	ProjectSection(SolutionItems) = preProject
 		deploy\compose\opentrader.compose.yml = deploy\compose\opentrader.compose.yml
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deployment", "deployment", "{E94D0D7F-26A8-4AF5-849C-260CF345A051}"
-	ProjectSection(SolutionItems) = preProject
-		deploy\deployment\identity.deploy.yaml = deploy\deployment\identity.deploy.yaml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "configs", "configs", "{B8F3D1C1-DCF6-4C1C-ABAC-3BFA9CE50B01}"
@@ -119,6 +105,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "resources", "resources", "{
 		repo\resources\repo_preview.png = repo\resources\repo_preview.png
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTrader.ExchangesApi", "src\applications\api\OpenTrader.ExchangesApi\OpenTrader.ExchangesApi.csproj", "{C53BC9BB-DD22-4E02-80AD-852274628BEB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scheduler", "scheduler", "{88FF3E72-52E6-4CBB-BEFB-29E44D0C58BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTrader.PatternApi", "src\applications\api\OpenTrader.PatternApi\OpenTrader.PatternApi.csproj", "{99155B46-EC95-4A85-8BE8-A43377F97951}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTrader.Pattern.Deribit", "src\applications\scheduler\OpenTrader.Pattern.Deribit\OpenTrader.Pattern.Deribit.csproj", "{0968E1A8-8F8D-471A-976A-49669D97025F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTrader.Pattern.Core", "src\infrastructures\libraries\OpenTrader.Pattern.Core\OpenTrader.Pattern.Core.csproj", "{DD6F4A08-0DF1-489B-9C03-E83583D3C9F8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "old", "old", "{7CDA1E76-491D-412F-B988-D0F77CE8828B}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\compose\old\s3-compose.yml = deploy\compose\old\s3-compose.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -128,7 +129,6 @@ Global
 		{21A12E61-75DE-4A63-9C64-5897375E919F} = {35D479A1-E7BC-4C66-B26C-A627063260DB}
 		{71723F05-D07D-4CCF-8C9A-169F9B9FAF19} = {35D479A1-E7BC-4C66-B26C-A627063260DB}
 		{CBA2BC84-73C7-426C-8B9D-D443E0BA73AF} = {21A12E61-75DE-4A63-9C64-5897375E919F}
-		{BB8504F7-AA43-43B0-AA8D-C28F43C62325} = {21A12E61-75DE-4A63-9C64-5897375E919F}
 		{9D117F18-513D-40F3-868F-A4E30A4F1442} = {CBA2BC84-73C7-426C-8B9D-D443E0BA73AF}
 		{E26CDF5C-5993-4A61-AAD4-97E519BB527F} = {71723F05-D07D-4CCF-8C9A-169F9B9FAF19}
 		{7F360F0C-9368-4361-8645-93C247003702} = {35D479A1-E7BC-4C66-B26C-A627063260DB}
@@ -145,15 +145,19 @@ Global
 		{A000544B-1AF8-4583-B15F-0614B6751180} = {331EC2C4-45BA-4F0A-8552-F6042F64A78E}
 		{2EA2B79A-7F89-4A33-910E-7E1420017D2E} = {BD958C62-E499-4E1E-873E-F4320CF4AC73}
 		{3148F6E1-1200-4AA9-8A31-9560D7E27357} = {2EA2B79A-7F89-4A33-910E-7E1420017D2E}
-		{BD71655F-5846-4D1F-80CA-8B8D13FF17F4} = {BD958C62-E499-4E1E-873E-F4320CF4AC73}
 		{D13E4BEF-A932-41E1-A563-F68B4A3041AF} = {BD958C62-E499-4E1E-873E-F4320CF4AC73}
-		{E94D0D7F-26A8-4AF5-849C-260CF345A051} = {BD958C62-E499-4E1E-873E-F4320CF4AC73}
 		{B8F3D1C1-DCF6-4C1C-ABAC-3BFA9CE50B01} = {BD958C62-E499-4E1E-873E-F4320CF4AC73}
 		{B76DB0C4-3A15-4932-A6DC-BBA300C2DDC7} = {BD958C62-E499-4E1E-873E-F4320CF4AC73}
 		{180A22C3-2007-4878-A809-15271D9572BB} = {25D3E521-3C87-4203-B3B2-C43BA246F22F}
 		{3165420A-DC69-442F-B850-337AB1A5123A} = {BD958C62-E499-4E1E-873E-F4320CF4AC73}
 		{AA1064EC-023D-4244-A164-A80105926E4C} = {2EA2B79A-7F89-4A33-910E-7E1420017D2E}
 		{4354278A-9834-4154-A0BC-D0E238A11A72} = {99A334F3-5294-418C-984E-98296821DF81}
+		{C53BC9BB-DD22-4E02-80AD-852274628BEB} = {CBA2BC84-73C7-426C-8B9D-D443E0BA73AF}
+		{88FF3E72-52E6-4CBB-BEFB-29E44D0C58BA} = {21A12E61-75DE-4A63-9C64-5897375E919F}
+		{99155B46-EC95-4A85-8BE8-A43377F97951} = {CBA2BC84-73C7-426C-8B9D-D443E0BA73AF}
+		{0968E1A8-8F8D-471A-976A-49669D97025F} = {88FF3E72-52E6-4CBB-BEFB-29E44D0C58BA}
+		{DD6F4A08-0DF1-489B-9C03-E83583D3C9F8} = {331EC2C4-45BA-4F0A-8552-F6042F64A78E}
+		{7CDA1E76-491D-412F-B988-D0F77CE8828B} = {D13E4BEF-A932-41E1-A563-F68B4A3041AF}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{9D117F18-513D-40F3-868F-A4E30A4F1442}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -192,5 +196,21 @@ Global
 		{A000544B-1AF8-4583-B15F-0614B6751180}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A000544B-1AF8-4583-B15F-0614B6751180}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A000544B-1AF8-4583-B15F-0614B6751180}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C53BC9BB-DD22-4E02-80AD-852274628BEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C53BC9BB-DD22-4E02-80AD-852274628BEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C53BC9BB-DD22-4E02-80AD-852274628BEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C53BC9BB-DD22-4E02-80AD-852274628BEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99155B46-EC95-4A85-8BE8-A43377F97951}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99155B46-EC95-4A85-8BE8-A43377F97951}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99155B46-EC95-4A85-8BE8-A43377F97951}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99155B46-EC95-4A85-8BE8-A43377F97951}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0968E1A8-8F8D-471A-976A-49669D97025F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0968E1A8-8F8D-471A-976A-49669D97025F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0968E1A8-8F8D-471A-976A-49669D97025F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0968E1A8-8F8D-471A-976A-49669D97025F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD6F4A08-0DF1-489B-9C03-E83583D3C9F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD6F4A08-0DF1-489B-9C03-E83583D3C9F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD6F4A08-0DF1-489B-9C03-E83583D3C9F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD6F4A08-0DF1-489B-9C03-E83583D3C9F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

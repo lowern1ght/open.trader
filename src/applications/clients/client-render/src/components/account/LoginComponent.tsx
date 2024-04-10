@@ -3,10 +3,10 @@ import {Link, Navigate} from "react-router-dom";
 import {IUserLogin} from "../../models/Identity.ts";
 import accountStyles from "./styles/Account.module.css"
 import {RouteViews} from "../../modules/RouteConfig.tsx";
-import {LockOutlined, MailOutlined} from "@ant-design/icons";
-import {IdentityClient} from "../../clients/identity.client.ts";
 import {IAccountComponent} from "../../interfaces/IAccountComponent.tsx";
+import {FrownOutlined, LockOutlined, MailOutlined} from "@ant-design/icons";
 import {Button, Card, Checkbox, Divider, Form, Input, notification, Spin, Typography} from "antd";
+import {IdentityClient} from "../../clients/identity.client.ts";
 
 export const LoginComponent = () : IAccountComponent => {
     const [isLogin, setLogin] = useState(false)
@@ -17,15 +17,15 @@ export const LoginComponent = () : IAccountComponent => {
         setLoading(true)
         
         try {
-            IdentityClient.LoginAsync(model)
+            IdentityClient.loginAsync(model)
                 .then(_ => setLogin(true))
                 .catch(reason => console.log(reason))
         }
         catch {
             api.error({
+                icon: <FrownOutlined/>,
                 message: 'Error sign in',
                 description: "Password or Email uncorrected"
-
             })
         }
         finally {
@@ -40,14 +40,14 @@ export const LoginComponent = () : IAccountComponent => {
     return (
         <Card className={accountStyles.form}>
 
-            {contextHolder}
-
+            {contextHolder} //Notification
+            
             <Spin spinning={loading} size={"large"}>
-
+                
                 <Typography.Title className={accountStyles.title_text}>
                     Sign In
                 </Typography.Title>
-
+                
                 <Form
                     name="normal_login"
                     className="login-form"

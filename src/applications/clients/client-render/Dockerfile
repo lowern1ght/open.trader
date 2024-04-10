@@ -1,19 +1,15 @@
-FROM node:lts-jessie
+FROM node:18-alpine
 
+EXPOSE 4000
 ENV NODE_ENV=production
 
-WORKDIR /usr/src/client-render
+WORKDIR /client-render
+
+RUN npm i -g typescript vite
 
 COPY . .
 
-RUN npm install
+RUN npm i
 
-RUN npm build
-
-EXPOSE 6000
-
-RUN chown -R node /usr/src/app
-
-USER node
-
-CMD ["npm", "preview"]
+#CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "preview"]

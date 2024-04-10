@@ -1,8 +1,6 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
-using System.Text.Json;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -22,7 +20,7 @@ public class IdentityService(
     UserManager<TraderUser> userManager,
     IdentityConfig identityConfig,
     IdentityTraderDbContext traderDbContext)
-    : IIdentityService<TraderUser>
+    : IIdentityService
 {
     public async Task LogoutAsync(CancellationToken token)
     {
@@ -64,10 +62,16 @@ public class IdentityService(
             throw new InvalidOperationException($"{nameof(contextAccessor.HttpContext)} is null");
 
         var claimsPrincipal = traderUser.ToClaimPrincipal();
+
+        var properties = new AuthenticationProperties
+        {
+            IsPersistent = true,
+            ExpiresUtc = DateTimeOffset.Now.AddYears(1)
+        };
         
         await contextAccessor.HttpContext.SignInAsync(
             CookieAuthenticationDefaults.AuthenticationScheme,
-            claimsPrincipal);
+            claimsPrincipal, properties);
     }
 
     /// <summary> Create user from <code>RegisterModel</code>> </summary>

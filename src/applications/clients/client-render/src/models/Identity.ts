@@ -11,7 +11,7 @@ export interface IUserLogin
 export interface IRegisterModel
     extends IUserDetail, IPassword
 {
-    confirmPassword: string
+    passwordConfirm: string
 }
 
 export interface IUserDetail {

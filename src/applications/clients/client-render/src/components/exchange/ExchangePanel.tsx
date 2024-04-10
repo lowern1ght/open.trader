@@ -35,8 +35,9 @@ export const ExchangePanel = () => {
     const [ user, setUser ] = useState( {} as IUserInfo | undefined)
     
     useEffect(() => {
-        IdentityClient.UserInfoAsync()
+        IdentityClient.userInfoAsync()
             .then(value => setUser(value.data as IUserInfo))
+        
     }, []);
     
     if (user == undefined)

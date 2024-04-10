@@ -36,7 +36,6 @@ public static class ServiceCollectionExtensions
         
         collection.AddScoped<IExchangeClient, ExchangeClient>();
         collection.AddScoped<IExchangeService, ExchangeService>();
-        collection.AddScoped<IExchangeImageService, ExchangeImageService>();
         
         return collection;
     }

@@ -1,10 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
-using OpenTrader.Identity.Service.Models;
+﻿using OpenTrader.Identity.Service.Models;
 
 namespace OpenTrader.Identity.Service.Interfaces;
 
-public interface IIdentityService<in TUser>
-    where TUser : IdentityUser
+public interface IIdentityService
 {
     Task LogoutAsync(CancellationToken token);
     

@@ -2,11 +2,9 @@
 
 namespace OpenTrader.Logger.Models;
 
-public class LoggerOptions(string connectionString, string minimalLevel)
+public record LoggerOptions
 {
-    public string MinimalLevel { get; init; } = minimalLevel is null or { Length: 0 } 
-        ? nameof(LogEventLevel.Information) 
-        : minimalLevel;
-    
-    public string ConnectionString { get; init; } = connectionString;
+    public string? ConnectionString { get; init; } = string.Empty;
+ 
+    public string MinimalLevel { get; init; } = nameof(LogEventLevel.Information);
 }
