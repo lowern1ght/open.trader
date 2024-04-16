@@ -1,1 +1,0 @@
-export const proxy : string = '/api';

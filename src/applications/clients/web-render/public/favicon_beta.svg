@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_Слой_1" data-name=" Слой 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <style>
+      .cls-1 {
+        font-family: Afacad-Regular, Afacad;
+        font-size: 56.62px;
+      }
+
+      .cls-1, .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        fill: #bf0060;
+      }
+
+      .cls-3, .cls-4, .cls-5, .cls-2 {
+        stroke-width: 0px;
+      }
+
+      .cls-4 {
+        fill: #bfd67b;
+      }
+
+      .cls-5 {
+        fill: #1d1e1b;
+      }
+    </style>
+  </defs>
+  <circle class="cls-2" cx="188.73" cy="213.73" r="113.22"/>
+  <g>
+    <rect class="cls-3" x="29.56" y="287.21" width="128.32" height="55.44"/>
+    <text class="cls-1" transform="translate(37.3 333.32)"><tspan x="0" y="0">BETA</tspan></text>
+  </g>
+  <circle class="cls-5" cx="218.41" cy="200" r="29.69"/>
+  <path class="cls-4" d="M209.21,49.66c-83.03,0-150.34,67.31-150.34,150.34,0,26.49,6.86,51.38,18.89,73h30.67c-9.3-14.68-14.68-32.08-14.68-50.74,0-52.45,42.52-94.97,94.97-94.97s94.97,42.52,94.97,94.97-42.52,94.97-94.97,94.97c-5.57,0-11.02-.48-16.33-1.4v29.96c11.78,2.97,24.12,4.55,36.82,4.55,83.03,0,150.34-67.31,150.34-150.34S292.24,49.66,209.21,49.66Z"/>
+</svg>

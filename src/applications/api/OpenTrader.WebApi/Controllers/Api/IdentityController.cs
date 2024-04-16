@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using OpenTrader.Identity.Service.Exceptions;
 using OpenTrader.Identity.Service.Extensions;
 using OpenTrader.Identity.Service.Interfaces;
@@ -32,13 +33,18 @@ public class IdentityController(IIdentityService identityService, ILogger<Identi
         {
             await identityService.LoginAsync(model, token);
         }
+        catch (WrongDataException exception)
+        {
+            logger.LogWarning("{WarningMessage}", exception.Message);
+            return BadRequest(exception.Message);
+        }
         catch (Exception exception)
         {
             logger.Log(LogLevel.Error, "Unhandled exception: {ExceptionMessage}", exception.Message);
             return Problem(exception.Message);
         }
         
-        return Ok($"Successes login [{HttpContext.User.GetHashCode()}]");
+        return Ok($"Successes login '{HttpContext.User.GetHashCode()}'");
     }
     
     /// <summary> Logout authorized user </summary>
@@ -83,11 +89,11 @@ public class IdentityController(IIdentityService identityService, ILogger<Identi
 
     /// <summary> Get user info on front </summary>
     /// <returns><see cref="UserModel"/></returns>
-    [HttpGet, Authorize]
+    [HttpGet("info"), Authorize]
     [SwaggerResponse(StatusCodes.Status200OK, "Get user claims from cookie", typeof(UserModel))]
-    public Task<IActionResult> InfoAsync()
+    public ValueTask<IActionResult> InfoAsync()
     {
-        return Task.FromResult<IActionResult>(Json(HttpContext.User.Claims.ToData()));
+        return ValueTask.FromResult<IActionResult>(Json(HttpContext.User.Claims.ToData()));
     }
     
     #region JwtToken

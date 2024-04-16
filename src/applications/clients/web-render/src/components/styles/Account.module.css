@@ -1,0 +1,33 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  justify-content: center;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  width: 300px;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+}
+
+.title_text {
+  font-family: "Afacad", sans-serif;
+  opacity: 0.8;
+  margin: 0;
+}
+
+.spin {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.back {
+  height: 100vh;
+  width: auto;
+  background-image: radial-gradient(at 82% 98%, hsl(95, 67%, 50%) 0px, transparent 50%), radial-gradient(at 50% 90%, hsl(191, 100%, 78%) 0px, transparent 25%), radial-gradient(at 0% 100%, hsl(336, 68%, 57%) 0px, transparent 75%);
+}
+
+/*# sourceMappingURL=Account.module.css.map */

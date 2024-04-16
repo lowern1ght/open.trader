@@ -5,10 +5,18 @@ namespace OpenTrader.Exchange.Service.Models;
 public class Exchange
 {
     /// <summary>
-    /// in app name, key, unique
+    /// Identification exchange
     /// </summary>
     [Key]
-    public required string Name { get; set; }
+    [Required]
+    public required string Id { get; set; }
+    
+    /// <summary>
+    /// Name in client-render
+    /// </summary>
+    [DataType(DataType.Text)]
+    [StringLength(50, MinimumLength = 2)]
+    public required string Title { get; set; }
     
     /// <summary>
     /// Base url provider exchange
@@ -17,16 +25,9 @@ public class Exchange
     public required string BaseUrl { get; set; }
     
     /// <summary>
-    /// Name in client-render
+    /// Internal exchange name
     /// </summary>
     [DataType(DataType.Text)]
     [StringLength(50, MinimumLength = 2)]
-    public required string DisplayName { get; set; }
-    
-    /// <summary>
-    /// File name in s3 storage
-    /// </summary>
-    [DataType(DataType.Text)]
-    [StringLength(50, MinimumLength = 2)]
-    public required string ResourceName { get; set; }
+    public required string InternalName { get; set; }
 }

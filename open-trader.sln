@@ -72,11 +72,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "compose", "compose", "{D13E4BEF-A932-41E1-A563-F68B4A3041AF}"
 	ProjectSection(SolutionItems) = preProject
 		deploy\compose\opentrader.compose.yml = deploy\compose\opentrader.compose.yml
+		deploy\compose\opentrader.compose.development.yml = deploy\compose\opentrader.compose.development.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "configs", "configs", "{B8F3D1C1-DCF6-4C1C-ABAC-3BFA9CE50B01}"
 	ProjectSection(SolutionItems) = preProject
 		deploy\configs\nginx.conf = deploy\configs\nginx.conf
+		deploy\configs\nginx.development.conf = deploy\configs\nginx.development.conf
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "security", "security", "{B76DB0C4-3A15-4932-A6DC-BBA300C2DDC7}"

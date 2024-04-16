@@ -1,0 +1,56 @@
+{
+  "name": "opentrader-web-render",
+  "private": true,
+  "version": "0.1.0",
+  "author": {
+    "name": "Alexander Sergeev",
+    "email": "lowernight@yahoo.com",
+    "url": "https://github.com/lowern1ght"
+  },
+  "description": "Ui part of OpenTrader application",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "bunx_dev": "bunx --bun vite --mode development",
+    "bunx_build": "bunx --bun vite build --mode production",
+    "bunx_preview": "bunx --bun vite preview"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.3.6",
+    "@berryv/g2-react": "^0.1.0",
+    "@react-buddy/ide-toolbox": "^2.4.0",
+    "@react-buddy/palette-antd": "^5.3.0",
+    "@tanstack/react-query": "^5.29.2",
+    "@tanstack/react-router": "^1.26.20",
+    "@tanstack/router-cli": "^1.26.16",
+    "@tanstack/router-devtools": "^1.26.20",
+    "@tanstack/router-vite-plugin": "^1.26.16",
+    "@types/node": "^20.12.7",
+    "@uidotdev/usehooks": "^2.4.1",
+    "antd": "^5.16.1",
+    "antv": "^0.2.2",
+    "axios": "^1.6.8",
+    "axios-mock-adapter": "^1.22.0",
+    "rc-virtual-list": "^3.11.4",
+    "react": "^18.2.0",
+    "react-device-detect": "^2.2.3",
+    "react-dom": "^18.2.0",
+    "usehooks-ts": "^3.1.0"
+  },
+  "devDependencies": {
+    "@tanstack/eslint-plugin-query": "^5.28.11",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "@vitejs/plugin-react-swc": "^3.6.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.8"
+  }
+}

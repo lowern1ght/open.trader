@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.not_found_text {
+  font-family: 'Afacad', sans-serif;
+  font-size: 56px;
+  opacity: 0.8;
+}
+
+.not_found_description_text {
+  font-size: 14px;
+  opacity: 0.5;
+  margin: 12px;
+}
+
+.button {
+  margin-top: 20px;
+}
+
+.main {
+  height: 100dvh;
+  width: auto;
+}

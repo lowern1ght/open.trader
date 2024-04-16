@@ -1,0 +1,29 @@
+.layout {
+  min-height: 100dvh;
+  
+  .space_main {
+    width: 100%;
+    height:80px;
+    padding: 10px;
+    justify-content: space-between;
+  }
+}
+
+.content_exchanges {
+  padding: 0 20px 20px;
+  margin-top: 0;
+  
+  .space_content {
+    align-content: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+  
+  .row_content {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+  }
+}
