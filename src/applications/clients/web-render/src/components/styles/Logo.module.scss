@@ -1,0 +1,23 @@
+.general {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex: auto;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+}
+
+.compact {
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.text {
+  font-family: Afacad, sans-serif;
+  font-size: 2em;
+}

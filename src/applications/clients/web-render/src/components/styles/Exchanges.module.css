@@ -1,0 +1,28 @@
+.layout {
+  min-height: 100dvh;
+}
+.layout .space_main {
+  width: 100%;
+  height: 80px;
+  padding: 10px;
+  justify-content: space-between;
+}
+
+.content_exchanges {
+  padding: 0 20px 20px;
+  margin-top: 0;
+}
+.content_exchanges .space_content {
+  align-content: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.content_exchanges .row_content {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 100%;
+}
+
+/*# sourceMappingURL=Exchanges.module.css.map */

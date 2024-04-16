@@ -1,0 +1,88 @@
+version: '3.8'
+
+name: opentrader-develop
+
+services:
+  
+  identity-db:
+    image: postgres:15.5
+    hostname: identity-db
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: RwPap27k5VnZTqVt
+    volumes:
+      - ../builds/migrations/init-identity.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5010:5432"
+    networks:
+      - open.trader-network
+      
+  web.api:
+    build:
+      context: .
+      dockerfile: ../../src/applications/api/OpenTrader.WebApi/Dockerfile
+    depends_on: 
+      - identity-db
+    ports:
+      - "5000:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Release
+      - ASPNETCORE_URLS=http://+:80
+    restart: on-failure
+    hostname: web-api
+    networks:
+      - open.trader-network
+
+  proxy:
+    image: nginx:latest
+    hostname: proxy-nginx
+    depends_on: 
+      - web.api
+    ports:
+      - "5900:443"
+    volumes:
+      - ../security/:/etc/nginx/
+      - ../configs/nginx.development.conf:/etc/nginx/nginx.conf
+      - ../resources/icons/icon.ico:/var/www/media/images/favicon.ico
+    networks:
+      - open.trader-network
+  
+  client.render:
+    build:
+      context: ../../src/applications/clients/client-render/
+      dockerfile: Dockerfile
+    restart: on-failure
+    hostname: client-render
+    depends_on:
+      - web.api
+    ports:
+      - "5060:5060"
+    environment:
+      - TRADER_CLIENT_PORT=5060
+      - TRADER_PROXY_URL=https://proxy-nginx
+    networks:
+      - open.trader-network
+
+  pattern.mq:
+    image: rabbitmq:3.9.29-management-alpine
+    hostname: pattern.mq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - "RABBITMQ_DEFAULT_USER=admin"
+      - "RABBITMQ_DEFAULT_PASS=LFSQBOAeRA"
+    networks: 
+      - open.trader-network
+
+networks:
+  open.trader-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.25.0.0/16
+          gateway: 172.25.0.1
+    
+volumes:
+  minio_storage: { }

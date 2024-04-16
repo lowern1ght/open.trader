@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using OpenTrader.Identity.Service.Exceptions;
 using OpenTrader.Identity.Service.Extensions;
 using OpenTrader.Identity.Service.Helpers;
@@ -16,11 +17,12 @@ using OpenTrader.Storage.Account.Models;
 namespace OpenTrader.Identity.Service;
 
 public class IdentityService(
-    IHttpContextAccessor contextAccessor,
-    UserManager<TraderUser> userManager,
     IdentityConfig identityConfig,
+    ILogger<IdentityService> logger,
+    UserManager<TraderUser> userManager,
+    IHttpContextAccessor contextAccessor,
     IdentityTraderDbContext traderDbContext)
-    : IIdentityService
+        : IIdentityService
 {
     public async Task LogoutAsync(CancellationToken token)
     {
@@ -56,8 +58,16 @@ public class IdentityService(
         var traderUser = await userManager.FindByEmailAsync(model.Email);
 
         if (traderUser is null)
-            throw new Exception($"User with email: [{model.Email}] not found");
+            throw new WrongDataException($"User with email: [{model.Email}] not found");
 
+        if (traderUser.PasswordHash is null || 
+            userManager.PasswordHasher.VerifyHashedPassword(traderUser,
+                traderUser.PasswordHash,
+                model.Password) != PasswordVerificationResult.Success)
+        {
+            throw new WrongDataException(ErrorConstants.UncorrectedPasswordOrEmail);
+        }
+        
         if (contextAccessor.HttpContext is null)
             throw new InvalidOperationException($"{nameof(contextAccessor.HttpContext)} is null");
 

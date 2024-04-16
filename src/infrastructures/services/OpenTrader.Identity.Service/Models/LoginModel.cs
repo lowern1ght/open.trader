@@ -11,4 +11,7 @@ public class LoginModel
     [Required]
     [DataType(DataType.Password)]
     public required string Password { get; set; }
+    
+    [Required]
+    public required bool RememberMe { get; set; } = false;
 }
